@@ -1,4 +1,10 @@
 import { useNavigate } from 'react-router-dom';
+import cathedral from './images/cathedral.png';
+import brotherhood from './images/brotherhood.png'
+import professionalism from './images/professionalism.png'
+import service from './images/service.png'
+import gear from './images/gear.png'
+
 
 export default function LandingPage() {
 
@@ -8,13 +14,8 @@ export default function LandingPage() {
     };
 
     return(
-        <div style={{display: "flex", flexDirection: "column", width: "fit-content"}}>
-            Landing Page
-            <button onClick={() => handleNavigation('/brothers')}>Brothers Page</button>
-            <button onClick={() => handleNavigation('/rush')}>Rush Page</button>
-            <button onClick={() => handleNavigation('/loginSignup')}>Login/Signup Page</button>
-            <button onClick={() => handleNavigation('/storefront')}>Merch Page</button>
-            <button onClick={() => handleNavigation('/questions')}>FAQ</button>
+        <div>
+            Landing            
         </div>
     )
 }

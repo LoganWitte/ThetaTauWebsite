@@ -1,8 +1,12 @@
+import "./App.css";
 import Routing from "./Routing";
 
 function App() {
   return (
-    <Routing />
+    <div className="wholePage">
+      <Routing />
+    </div>
+    
   );
 }
 

@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap');
+  
+
+* {
+    font-family: 'Gideon Roman', serif;
+}
+
+body {
+    overflow-y: auto;
+}
+
+.wholePage {
+    height: 100vh;
+    width: 100vw;
+    background: #7B1A1A;
+}
+
+.navBar {
+    position: sticky;
+    height: 7.5vh;
+    width: 100vw;
+    background: #DCA543;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid black;
+    
+}
+
+.navElements {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navButton {
+    margin-left: 0.8em;
+    margin-right: 0.8em;
+    font-size: 1.2em;
+}
+
+.navButton:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.logoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoContainer img {
+    height: 90%;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.logoContainer:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
