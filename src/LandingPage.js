@@ -15,7 +15,7 @@ export default function LandingPage() {
 
     return(
         <div>
-            Landing            
+            <div style={{color: "white", fontSize: "5em", paddingBottom: "10em"}}>Landing Page</div>
         </div>
     )
 }

@@ -1,18 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap');
-  
 
 * {
     font-family: 'Gideon Roman', serif;
+    
+    overflow-x: hidden;
 }
 
 body {
-    overflow-y: auto;
+    background: #7B1A1A;
 }
 
 .wholePage {
-    height: 100vh;
+    height: 92.5vh;
     width: 100vw;
-    background: #7B1A1A;
+    overflow-y: auto;
 }
 
 .navBar {
@@ -37,8 +38,8 @@ body {
 }
 
 .navButton {
-    margin-left: 0.8em;
-    margin-right: 0.8em;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
     font-size: 1.2em;
 }
 
@@ -48,14 +49,17 @@ body {
 }
 
 .logoContainer {
+    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    overflow-y: hidden;
 }
 
 .logoContainer img {
     height: 90%;
+    aspect-ratio: 0.56;
     margin-left: 1em;
     margin-right: 1em;
 }
@@ -63,4 +67,25 @@ body {
 .logoContainer:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.navHamburger {
+    position: absolute;
+    right: 0.3em;
+}
+
+.navHamburger img {
+    display: flex;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid black;
+    padding: 0.3em;
+    border-radius: 25%;
+    height: 4vh;
+    aspect-ratio: 0.6666;
+}
+
+@media (max-width: 768px) {
+    .link {
+        text-decoration: underline;
+    }
 }

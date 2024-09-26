@@ -14,16 +14,18 @@ export default function Routing() {
         <div>
             <Router>
                 <Navbar />
-                <Routes>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route path="/brothers" element={<Brothers />} />
-                    <Route path="/loginSignup" element={<LoginSignup />} />
-                    <Route path="/shop" element={<Shop />} />
-                    <Route path="/questions" element={<FAQ />} />
-                    <Route path="/rush" element={<Rush />} />
-                    <Route path="/events" element={<Events />} />
-                    <Route path="*" element={<ErrorPage />} />
-                </Routes>
+                <div className="wholePage">
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/brothers" element={<Brothers />} />
+                        <Route path="/account" element={<LoginSignup />} />
+                        <Route path="/shop" element={<Shop />} />
+                        <Route path="/questions" element={<FAQ />} />
+                        <Route path="/rush" element={<Rush />} />
+                        <Route path="/events" element={<Events />} />
+                        <Route path="*" element={<ErrorPage />} />
+                    </Routes>
+                </div>
             </Router>
         </div>
     )

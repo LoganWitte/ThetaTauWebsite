@@ -3,10 +3,7 @@ import Routing from "./Routing";
 
 function App() {
   return (
-    <div className="wholePage">
-      <Routing />
-    </div>
-    
+    <Routing />
   );
 }
 
