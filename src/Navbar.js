@@ -7,7 +7,7 @@ import hamburger from './images/hamburger.png';
 
 export default function Navbar() {
 
-    
+
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
     useEffect(() => {

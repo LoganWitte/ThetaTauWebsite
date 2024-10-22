@@ -2,12 +2,15 @@
 
 * {
     font-family: 'Gideon Roman', serif;
-    
+    box-sizing: border-box;
     overflow-x: hidden;
 }
 
 body {
     background: #7B1A1A;
+    color: black;
+    margin: 0;
+    padding: 0;
 }
 
 .wholePage {
@@ -28,7 +31,6 @@ body {
     justify-content: space-between;
 
     border-bottom: 1px solid black;
-    
 }
 
 .navElements {
@@ -82,6 +84,87 @@ body {
     border-radius: 25%;
     height: 4vh;
     aspect-ratio: 0.6666;
+}
+
+
+/* Rush page */
+
+/* Let's Rush */
+.headerContainer {
+    text-align: center;
+    color:#DCA543;
+    padding: 20px; /* Add padding inside sections */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* What is Rush? */
+.infoSection{
+    background: #DCA543; 
+    color: black;
+    padding: 20px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);  
+}
+
+/* Recruitment Schedule*/
+.scheduleHeader {
+    border: 2px solid #DCA543; /* Headline Border */
+    padding: 10px; 
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+
+.scheduleSection {
+    background: #7B1A1A;
+    padding: 20px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);  
+}
+
+.scheduleBoxes {
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
+    gap: 10px; /*between boxes */
+    margin-top: 20px; /*above the boxes */
+}
+
+.scheduleBox {
+    border: 2px solid #DCA543; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    height: 50px;
+    box-sizing: border-box;
+    font-size: 2vw;
+
+}
+
+.eligibilitySection {
+    background: #DCA543;
+    padding: 20px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);  
+}
+
+.photoGallery {
+    background:#7B1A1A;
+    padding: 20px;
+    color: black;
+}
+
+h2 {
+    color: black;
+    margin-bottom: 10px; 
+}
+
+p, ul {
+    line-height: 1.6; /* Improve readability with line height */
+}
+
+ul {
+    padding-left: 20px; /* Indent list items */
+}
+
+li {
+    margin-bottom: 8px; /* Add spacing between list items */
 }
 
 @media (max-width: 768px) {
