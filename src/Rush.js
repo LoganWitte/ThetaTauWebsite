@@ -18,14 +18,14 @@ export default function Rush() {
                 <p>
                     Recruitment Schedule Goes Here...
                 </p>
-                <div class="scheduleBoxes">
-                    <div class="scheduleBox">Monday</div>
-                    <div class="scheduleBox">Tuesday</div>
-                    <div class="scheduleBox">Wednesday</div>
-                    <div class="scheduleBox">Thursday</div>
-                    <div class="scheduleBox">Friday</div>
-                    <div class="scheduleBox">Saturday</div>
-                    <div class="scheduleBox">Sunday</div>
+                <div className="scheduleBoxes">
+                    <div className="scheduleBox">Monday</div>
+                    <div className="scheduleBox">Tuesday</div>
+                    <div className="scheduleBox">Wednesday</div>
+                    <div className="scheduleBox">Thursday</div>
+                    <div className="scheduleBox">Friday</div>
+                    <div className="scheduleBox">Saturday</div>
+                    <div className="scheduleBox">Sunday</div>
                 </div>
             </section>
             <section className="eligibilitySection">
@@ -40,7 +40,7 @@ export default function Rush() {
                 </ul>
             </section>
             <section className="photoGallery">
-                <h2>Interactice Photo Gallery Here....</h2>
+                <h2>Interactive Photo Gallery Here....</h2>
             </section>
         </>
     );

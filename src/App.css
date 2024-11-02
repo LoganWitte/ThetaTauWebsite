@@ -71,21 +71,6 @@ body {
     text-decoration: underline;
 }
 
-.navHamburger {
-    position: absolute;
-    right: 0.3em;
-}
-
-.navHamburger img {
-    display: flex;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid black;
-    padding: 0.3em;
-    border-radius: 25%;
-    height: 4vh;
-    aspect-ratio: 0.6666;
-}
-
 
 /* Rush page */
 

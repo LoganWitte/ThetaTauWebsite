@@ -1,63 +1,62 @@
-import { useNavigate} from 'react-router-dom';
-import {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import logo from './images/logo.png';
 import hamburger from './images/hamburger.png';
 
+const Navbar = () => {
+    
+    const [hamburgerExpanded, setHamburgerExpanded] = useState(false);
 
-export default function Navbar() {
-
-
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
-
-    useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth <= 600);
-
-        // Listen to both resize and orientationchange events
-        window.addEventListener('resize', handleResize);
-        window.addEventListener('orientationchange', handleResize);
-
-        // Initial check on mount to ensure proper behavior
-        handleResize();
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-            window.removeEventListener('orientationchange', handleResize);
-        };
-    }, []);
-
-    const navigate = useNavigate();
-    const handleNavigation = (url) => {
-        navigate(url);
-    };
+    function handleHamburgerClick() {
+        setHamburgerExpanded(!hamburgerExpanded);
+    }
 
     function handleLogoClick() {
         window.open('https://www.thetataupg.org/', '_blank');
     }
 
     return(
-        <div className="navBar">
+        <div className="navBar relative overflow-visible">
             <div className="logoContainer link" onClick={handleLogoClick}>
-                <img className="navLogo" src={logo} onClick={() => handleNavigation('/')} alt="Theta Tau Logo"/>
-                <div style={{fontSize: isMobile ? "0.8em" : "auto"}}>
+                <img className="navLogo" src={logo} alt="Theta Tau Logo"/>
+                <div className="sm:text-sm lg:text-base">
                     <div style={{fontWeight: "bolder", fontSize: "1.35em"}}>Theta Tau</div>
                     <div style={{whiteSpace: "nowrap"}}>Professional Engineering Fraternity </div>
                 </div>
             </div>
-            {!isMobile ?
-            <div className="navElements">
-                <div className="navButton" onClick={() => handleNavigation('/')}>Home</div>
-                <div className="navButton" onClick={() => handleNavigation('/shop')}>Shop</div>
-                <div className="navButton" onClick={() => handleNavigation('/brothers')}>Brothers</div>
-                <div className="navButton" onClick={() => handleNavigation('/rush')}>Rush</div>
-                <div className="navButton" onClick={() => handleNavigation('/events')}>Events</div>
-                <div className="navButton" onClick={() => handleNavigation('/account')}>Account</div>
+
+            {/*Desktop Navbar*/}
+            <div className="hidden lg:block">
+                <div className="flex flex-row align-center">
+                    <Link to="/"><div className="navButton">Home</div></Link>
+                    <Link to="/shop"><div className="navButton">Shop</div></Link>
+                    <Link to="/brothers"><div className="navButton">Brothers</div></Link>
+                    <Link to="/rush"><div className="navButton">Rush</div></Link>
+                    <Link to="/events"><div className="navButton">Events</div></Link>
+                    <Link to="/account"><div className="navButton">Account</div></Link>
+                </div>
             </div>
-            :
-            <div className="navHamburger">
-                <img src={hamburger}  alt="hamburger menu"/>
-            </div>
+
+            {/*Mobile Navbar (Hamburger Menu)*/}
+            <div className="lg:hidden">
+                <div className="sm:block lg:hidden">
+                    <img className="bg-white/50 border border-black p-1 rounded-md h-10 aspect-square mr-2" src={hamburger} onClick={handleHamburgerClick}  alt="hamburger menu"/>
+                    {hamburgerExpanded &&
+                    <div className="flex flex-col align-center justify-center absolute right-1 top-14 p-1 border border-black text-black bg-[#DCA543] bg-white/50 rounded-md">
+                        <Link to="/"><div className="border-b border-black">Home</div></Link>
+                        <Link to="/shop"><div className="border-b border-black">Shop</div></Link>
+                        <Link to="/brothers"><div className="border-b border-black">Brothers</div></Link>
+                        <Link to="/rush"><div className="border-b border-black">Rush</div></Link>
+                        <Link to="/events"><div className="border-b border-black">Events</div></Link>
+                        <Link to="/account"><div className="">Account</div></Link>
+                    </div>
             }
+                </div>
+            </div>
+            
         </div>
     )
 }
+
+export default Navbar;
