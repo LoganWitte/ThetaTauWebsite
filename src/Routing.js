@@ -8,6 +8,7 @@ import FAQ from "./FAQ";
 import Rush from "./Rush";
 import Navbar from "./Navbar";
 import Events from "./Events";
+import Footer from "./Footer";
 
 export default function Routing() {
     return(
@@ -25,7 +26,9 @@ export default function Routing() {
                         <Route path="/events" element={<Events />} />
                         <Route path="*" element={<ErrorPage />} />
                     </Routes>
+                    <Footer />
                 </div>
+                
             </Router>
         </div>
     )

@@ -51,7 +51,7 @@ const Navbar = () => {
                         <Link to="/events"><div className="border-b border-black">Events</div></Link>
                         <Link to="/account"><div className="">Account</div></Link>
                     </div>
-            }
+                    }
                 </div>
             </div>
             
