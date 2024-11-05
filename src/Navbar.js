@@ -34,7 +34,6 @@ const Navbar = () => {
                     <Link to="/brothers"><div className="navButton">Brothers</div></Link>
                     <Link to="/rush"><div className="navButton">Rush</div></Link>
                     <Link to="/events"><div className="navButton">Events</div></Link>
-                    <Link to="/account"><div className="navButton">Account</div></Link>
                 </div>
             </div>
 
@@ -49,7 +48,6 @@ const Navbar = () => {
                         <Link to="/brothers"><div className="border-b border-black">Brothers</div></Link>
                         <Link to="/rush"><div className="border-b border-black">Rush</div></Link>
                         <Link to="/events"><div className="border-b border-black">Events</div></Link>
-                        <Link to="/account"><div className="">Account</div></Link>
                     </div>
                     }
                 </div>

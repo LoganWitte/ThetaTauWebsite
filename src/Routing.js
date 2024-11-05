@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import ErrorPage from "./ErrorPage";
 import Brothers from "./Brothers";
-import LoginSignup from "./LoginSignup";
 import Shop from "./Shop";
 import FAQ from "./FAQ";
 import Rush from "./Rush";
@@ -19,7 +18,6 @@ export default function Routing() {
                     <Routes>
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/brothers" element={<Brothers />} />
-                        <Route path="/account" element={<LoginSignup />} />
                         <Route path="/shop" element={<Shop />} />
                         <Route path="/questions" element={<FAQ />} />
                         <Route path="/rush" element={<Rush />} />

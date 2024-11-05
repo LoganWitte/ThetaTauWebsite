@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import cathedral from './images/cathedral.png';
 import brotherhood from './images/brotherhood.png'
 import professionalism from './images/professionalism.png'
@@ -9,12 +8,6 @@ import interestedSword from './images/interestedSword.png'
 
 
 export default function LandingPage() {
-
-    const navigate = useNavigate();
-    const handleNavigation = (url) => {
-        navigate(url);
-    };
-
     return(
         <div>
             <div className="flex justify-center">
@@ -39,7 +32,5 @@ export default function LandingPage() {
                 <img className="w-[50vw] p-5 mt-10" src={interestedSword} alt="sword" />
             </div>
         </div>
-        
-        
     )
 }
