@@ -65,50 +65,44 @@ export default function LandingPage() {
                     <div className="absolute top-0 left-0 rounded-full w-full h-full hover:bg-black opacity-15" />
                 </button>
 
-                {brotherhoodOpen &&
-                    <div className="absolute top-[65%] left-[5%] w-[90%] h-fit bg-[#DCA543] overflow-visible">
-                        <img className="absolute top-[-11.5%] left-[7.15%] w-[4.83%] h-[12.3%]" src={triangle} alt="triangle" />
-                        <div className="w-full h-full flex flex-row items-center justify-between ">
-                            <div className="flex flex-col flex-1 h-full items-center justify-center text-center m-[2%]
-                                            text-[13px] lg:text-[16px]
-                                            ">
-                                <div className="font-bold text-[2em]">Brotherhood</div>
-                                <div className="">We forge lifelong bonds of fraternal friendship, a journey that develops and delivers a network of lasting personal and professional relationships. We foster an inviting, safe, and social environment.</div>
-                            </div>
-                            <img src={bortherhoodPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
+                <div className={`absolute top-[65%] left-[5%] w-[90%] h-fit bg-[#DCA543] overflow-visible transition-opacity duration-200 ease-in-out ${brotherhoodOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                    <img className="absolute top-[-11.5%] left-[7.15%] w-[4.83%] h-[12.3%]" src={triangle} alt="triangle" />
+                    <div className="w-full h-full flex flex-row items-center justify-between ">
+                        <div className="flex flex-col flex-1 h-full items-center justify-center text-center m-[2%]
+                                        text-[13px] lg:text-[16px]
+                                        ">
+                            <div className="font-bold text-[2em]">Brotherhood</div>
+                            <div className="">We forge lifelong bonds of fraternal friendship, a journey that develops and delivers a network of lasting personal and professional relationships. We foster an inviting, safe, and social environment.</div>
                         </div>
+                        <img src={bortherhoodPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
                     </div>
-                }
+                </div>
 
-                {professionalismOpen &&
-                    <div className="absolute top-[65%] left-[5%] w-[90%] h-fit bg-[#DCA543] overflow-visible">
-                        <img className="absolute top-[-11.5%] left-[47.225%] w-[4.83%] h-[12.3%]" src={triangle} alt="triangle" />
-                        <div className="w-full h-full flex flex-row items-center justify-between ">
-                            <div className="flex flex-col flex-1 h-full items-center justify-center text-center m-[2%]
-                                            lg:text-[16px] text-[11px]
-                                            ">
-                                <div className="font-bold text-[2em]">Professionalism</div>
-                                <div className="">INSER PROFESSIONALISM PARAGRAPH</div>
-                            </div>
-                            <img src={bortherhoodPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
+                <div className={`absolute top-[65%] left-[5%] w-[90%] h-fit bg-[#DCA543] overflow-visible transition-opacity duration-200 ease-in-out ${professionalismOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                    <img className="absolute top-[-11.5%] left-[47.225%] w-[4.83%] h-[12.3%]" src={triangle} alt="triangle" />
+                    <div className="w-full h-full flex flex-row items-center justify-between ">
+                        <div className="flex flex-col flex-1 h-full items-center justify-center text-center m-[2%]
+                                        lg:text-[16px] text-[11px]
+                                        ">
+                            <div className="font-bold text-[2em]">Professionalism</div>
+                            <div className="">INSER PROFESSIONALISM PARAGRAPH</div>
                         </div>
+                        <img src={bortherhoodPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
                     </div>
-                }
+                </div>
 
-                {serviceOpen &&
-                    <div className="absolute top-[65%] left-[5%] w-[90%] h-fit bg-[#DCA543] overflow-visible">
-                        <img className="absolute top-[-11.5%] left-[88.5%] w-[4.83%] h-[12.3%]" src={triangle} alt="triangle" />
-                        <div className="w-full h-full flex items-center justify-between ">
-                            <div className="flex flex-col flex-1 h-full items-center justify-center text-center m-[2%]
-                                            lg:text-[16px] text-[11px]
-                                            ">
-                                <div className="font-bold text-[2em]">Service</div>
-                                <div className="">INSERT SERVICE PARAGRAPH</div>
-                            </div>
-                            <img src={bortherhoodPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
+                <div className={`absolute top-[65%] left-[5%] w-[90%] h-fit bg-[#DCA543] overflow-visible transition-opacity duration-200 ease-in-out ${serviceOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                    <img className="absolute top-[-11.5%] left-[88.5%] w-[4.83%] h-[12.3%]" src={triangle} alt="triangle" />
+                    <div className="w-full h-full flex items-center justify-between ">
+                        <div className="flex flex-col flex-1 h-full items-center justify-center text-center m-[2%]
+                                        lg:text-[16px] text-[11px]
+                                        ">
+                            <div className="font-bold text-[2em]">Service</div>
+                            <div className="">INSERT SERVICE PARAGRAPH</div>
                         </div>
+                        <img src={bortherhoodPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
                     </div>
-                }
+                </div>
 
             </div>
 
