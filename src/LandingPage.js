@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react"
 
 import cathedral from './images/cathedral.png';
 import brotherhood from './images/brotherhood.png'
@@ -38,7 +38,7 @@ export default function LandingPage() {
 
     }, [])
 
-    return(
+    return (
         <div className="flex flex-col items-center">
 
             {/*Cathedral section*/}
@@ -47,7 +47,7 @@ export default function LandingPage() {
                 <img src={cathedral} className="max-w-[80vw]" alt="cathedral" />
 
                 <div className="absolute top-[4.2%] left-[40.8%] w-[18.26%] h-[27.14%] overflow-hidden">
-                    <img src={gear} style={{transform: `rotate(${scrollPosition * 360}deg)`}} alt="gear" />
+                    <img src={gear} style={{ transform: `rotate(${scrollPosition * 360}deg)` }} alt="gear" />
                 </div>
 
                 <button onClick={() => handleSectionClick("brotherhood")} className="absolute top-[48.5%] left-[9.24%] w-[8.59%] h-[13.1%] border border-black rounded-full">
@@ -59,7 +59,7 @@ export default function LandingPage() {
                     <img src={professionalism} alt="professionalism" />
                     <div className="absolute top-0 left-0 rounded-full w-full h-full hover:bg-black opacity-15" />
                 </button>
-                
+
                 <button onClick={() => handleSectionClick("service")} className="absolute top-[48.5%] left-[82.3%] w-[8.59%] h-[13.1%] border border-black rounded-full">
                     <img src={service} alt="service" />
                     <div className="absolute top-0 left-0 rounded-full w-full h-full hover:bg-black opacity-15" />
@@ -80,7 +80,7 @@ export default function LandingPage() {
                     </div>
                 }
 
-                {professionalismOpen && 
+                {professionalismOpen &&
                     <div className="absolute top-[65%] left-[5%] w-[90%] h-fit bg-[#DCA543] overflow-visible">
                         <img className="absolute top-[-11.5%] left-[47.225%] w-[4.83%] h-[12.3%]" src={triangle} alt="triangle" />
                         <div className="w-full h-full flex flex-row items-center justify-between ">
