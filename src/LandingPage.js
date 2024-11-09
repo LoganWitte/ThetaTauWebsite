@@ -40,6 +40,7 @@ export default function LandingPage() {
 
     return (
         <div className="flex flex-col items-center">
+            <div id="top" />
 
             {/*Cathedral section*/}
             <div className="relative mt-16 mb-32 overflow-visible">
@@ -85,7 +86,7 @@ export default function LandingPage() {
                                         lg:text-[16px] text-[11px]
                                         ">
                             <div className="font-bold text-[2em]">Professionalism</div>
-                            <div className="">INSER PROFESSIONALISM PARAGRAPH</div>
+                            <div className="">We develop and nurture engineers with strong communication, problem-solving, collaboration, and leadership skills that we demonstrate in our profession, community, and lives.</div>
                         </div>
                         <img src={bortherhoodPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
                     </div>
@@ -98,7 +99,7 @@ export default function LandingPage() {
                                         lg:text-[16px] text-[11px]
                                         ">
                             <div className="font-bold text-[2em]">Service</div>
-                            <div className="">INSERT SERVICE PARAGRAPH</div>
+                            <div className="">We are known for our service to our university and larger community. Our service projects create a unifying environment for learning and personal growth for our members.</div>
                         </div>
                         <img src={bortherhoodPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
                     </div>

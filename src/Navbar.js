@@ -6,7 +6,7 @@ const Navbar = () => {
     return(
         <div className="bg-[#DCA543] w-full flex items-center justify-between border-b border-black">
             {/*Logo/Title Section*/}
-            <a href="https://www.thetataupg.org/" target="_blank" rel="noopener noreferrer" className="flex ml-2 h-full hover:underline">
+            <a href="/#top" className="flex ml-2 h-full hover:underline">
                 <img src={logo} className="h-full aspect-[50/77] p-2" alt="Theta Tau Logo" />
                 <div className="p-2 flex flex-col justify-center">
                     <div className="font-bold text-xl">Theta Tau</div>
