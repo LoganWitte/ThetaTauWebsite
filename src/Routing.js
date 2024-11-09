@@ -11,10 +11,10 @@ import Footer from "./Footer";
 
 export default function Routing() {
     return(
-        <div>
+        <div className="flex flex-col h-screen">
             <Router>
                 <Navbar />
-                <div className="wholePage">
+                <div id="outerContainer" className="flex-1 overflow-y-auto bg-[#7B1A1A]">
                     <Routes>
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/brothers" element={<Brothers />} />
@@ -26,7 +26,6 @@ export default function Routing() {
                     </Routes>
                     <Footer />
                 </div>
-                
             </Router>
         </div>
     )

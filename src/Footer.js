@@ -1,35 +1,39 @@
+import instagram from './images/instagram.png'
+import facebook from './images/facebook.png'
+import twitter from './images/twitter.png'
+
 const Footer = () => {
     return(
         <div className="border-t border-black flex align-center justify-center">
             <div className="p-3">
                 <strong>Theta Tau</strong>
                 <br />
-                Rho Gamma Chapter
+                <a href="/PUTLINKHERE" target="_blank" rel="noopener noreferrer" className="hover:underline">Rho Gamma Chapter</a>
                 <br />
-                University of Central Florida
+                <a href="/PUTLINKHERE" target="_blank" rel="noopener noreferrer" className="hover:underline">University of Central Florida</a>
                 <br />
-                2020 Theta Tau Rho Gamma
-                <br />
-                Chapter
+                <a href="/PUTLINKHERE" target="_blank" rel="noopener noreferrer" className="hover:underline">2020 Theta Tau Rho Gamma Chapter</a>
             </div>
             <div className="p-3">
                 <strong>General</strong>
                 <br />
-                National Theta Tau
+                <a href="/PUTLINKHERE" target="_blank" rel="noopener noreferrer" className="hover:underline">National Theta Tau</a>
                 <br />
-                About
+                <a href="/PUTLINKHERE" target="_blank" rel="noopener noreferrer" className="hover:underline">About</a>
             </div>
             <div className="p-3">
                 <strong>Recruitment</strong>
                 <br />
-                FAQ
+                <a href="/PUTLINKHERE" target="_blank" rel="noopener noreferrer" className="hover:underline">FAQ</a>
                 <br />
-                Apply
+                <a href="/PUTLINKHERE" target="_blank" rel="noopener noreferrer" className="hover:underline">Apply</a>
             </div>
             <div className="p-3 flex flex-col align-center">
                 <strong className="text-center">Socials</strong>
-                <div>
-                    INSTA FACEB TWITT
+                <div className="flex">
+                    <a href="/PUTLINKHERE" target="_blank" rel="noopener noreferrer"><img className="px-1" src={instagram} alt="instagram logo"/></a>
+                    <a href="/PUTLINKHERE" target="_blank" rel="noopener noreferrer"><img className="px-1" src={facebook} alt="facebook logo" /></a>
+                    <a href="/PUTLINKHERE" target="_blank" rel="noopener noreferrer"><img className="px-1" src={twitter} alt="x/twitter logo" /></a>
                 </div>
                 
             </div>
