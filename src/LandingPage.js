@@ -10,8 +10,6 @@ import bortherhoodPicture from './images/brotherhoodPicture.png'
 import groupPhoto from './images/groupPhoto.png'
 import interestedSword from './images/interestedSword.png'
 
-
-
 export default function LandingPage() {
 
     const [brotherhoodOpen, setBrotherhoodOpen] = useState(false);
