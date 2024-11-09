@@ -7,7 +7,6 @@ import service from './images/service.png'
 import gear from './images/gear.png'
 import triangle from './images/triangle.png'
 import bortherhoodPicture from './images/brotherhoodPicture.png'
-
 import groupPhoto from './images/groupPhoto.png'
 import interestedSword from './images/interestedSword.png'
 
