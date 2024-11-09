@@ -18,7 +18,7 @@ export default function LandingPage() {
     const [brotherhoodOpen, setBrotherhoodOpen] = useState(false);
     const [professionalismOpen, setProfessionalismOpen] = useState(false);
     const [serviceOpen, setServiceOpen] = useState(false);
-    const [scrollPosition, setScrollPosition] = useState(0)
+    const [scrollPosition, setScrollPosition] = useState(0);
 
     function handleSectionClick(section) {
         setBrotherhoodOpen(section === "brotherhood" && !brotherhoodOpen);
@@ -69,9 +69,7 @@ export default function LandingPage() {
                 </button>
 
                 {brotherhoodOpen &&
-                    <div className="absolute top-[65%] left-[5%] w-[90%] h-fit bg-[#DCA543] overflow-visible
-                                    transition-opacity duration-500 opacity-0"
-                        style={{opacity: brotherhoodOpen ? "1" : "0", transition: "opacity 0.5s ease-in-out"}}>
+                    <div className="absolute top-[65%] left-[5%] w-[90%] h-fit bg-[#DCA543] overflow-visible">
                         <img className="absolute top-[-11.5%] left-[7.15%] w-[4.83%] h-[12.3%]" src={triangle} alt="triangle" />
                         <div className="w-full h-full flex flex-row items-center justify-between ">
                             <div className="flex flex-col flex-1 h-full items-center justify-center text-center m-[2%]
