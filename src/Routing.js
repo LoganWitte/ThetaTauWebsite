@@ -14,7 +14,7 @@ export default function Routing() {
         <div className="flex flex-col h-screen">
             <Router>
                 <Navbar />
-                <div id="outerContainer" className="flex-1 overflow-y-auto bg-[#7B1A1A] scroll-smooth">
+                <div id="outerContainer" className="flex-1 overflow-y-auto bg-[#7B1A1A]">
                     <Routes>
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/brothers" element={<Brothers />} />
