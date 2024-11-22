@@ -1,4 +1,32 @@
+import React, { useState, useEffect } from "react";
+
 export default function Rush() {
+  const daysOfWeek = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  // Detect screen width to switch layout
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768); // Adjust breakpoint as needed
+    };
+
+    handleResize(); // Check on initial render
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <header className="text-center text-[#DCA543] p-5 shadow-lg">
@@ -19,92 +47,77 @@ export default function Rush() {
       {/* Recruitment Schedule Section */}
       <section className="bg-transparent text-[#DCA543] p-5 shadow-lg">
         <div className="border-2 border-[#DCA543] p-3 mb-5 text-center">
-          <h2 className="text-3xl text-[#DCA543]">Recruitment Schedule</h2>
-        </div>
-        <div className="flex justify-between gap-3 mt-5">
-          {/* Monday */}
-          <div className="flex flex-col items-center w-1/6">
-            <span className="text-center font-semibold text-sm sm:text-base md:text-lg">
-              Monday
-            </span>
-            <div className="border-2 border-[#DCA543] h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-32 lg:w-32 flex justify-center items-center">
-              {/* Add event details here */}
-            </div>
-          </div>
-
-          {/* Tuesday */}
-          <div className="flex flex-col items-center w-1/6">
-            <span className="text-center font-semibold text-sm sm:text-base md:text-lg">
-              Tuesday
-            </span>
-            <div className="border-2 border-[#DCA543] h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-32 lg:w-32 flex justify-center items-center">
-              {/* Add event details here */}
-            </div>
-          </div>
-
-          {/* Wednesday */}
-          <div className="flex flex-col items-center w-1/6">
-            <span className="text-center font-semibold text-sm sm:text-base md:text-lg">
-              Wednesday
-            </span>
-            <div className="border-2 border-[#DCA543] h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-32 lg:w-32 flex justify-center items-center">
-              {/* Add event details here */}
-            </div>
-          </div>
-
-          {/* Thursday */}
-          <div className="flex flex-col items-center w-1/6">
-            <span className="text-center font-semibold text-sm sm:text-base md:text-lg">
-              Thursday
-            </span>
-            <div className="border-2 border-[#DCA543] h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-32 lg:w-32 flex justify-center items-center">
-              {/* Add event details here */}
-            </div>
-          </div>
-
-          {/* Friday */}
-          <div className="flex flex-col items-center w-1/6">
-            <span className="text-center font-semibold text-sm sm:text-base md:text-lg">
-              Friday
-            </span>
-            <div className="border-2 border-[#DCA543] h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-32 lg:w-32 flex justify-center items-center">
-              {/* Add event details here */}
-            </div>
-          </div>
-
-          {/* Saturday */}
-          <div className="flex flex-col items-center w-1/6">
-            <span className="text-center font-semibold text-sm sm:text-base md:text-lg">
-              Saturday
-            </span>
-            <div className="border-2 border-[#DCA543] h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-32 lg:w-32 flex justify-center items-center">
-              {/* Add event details here */}
-            </div>
-          </div>
-
-          {/* Sunday */}
-          <div className="flex flex-col items-center w-1/6">
-            <span className="text-center font-semibold text-sm sm:text-base md:text-lg">
-              Sunday
-            </span>
-            <div className="border-2 border-[#DCA543] h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-32 lg:w-32 flex justify-center items-center">
-              {/* Add event details here */}
-            </div>
+          <div
+            contentEditable
+            className="text-3xl text-[#DCA543] h-auto p-1 focus:outline-none"
+          >
+            Recruitment Schedule - January 2025
           </div>
         </div>
+        {isMobileView ? (
+          // Single square with horizontal scrolling
+          <div className="overflow-x-auto flex gap-4 p-4">
+            {daysOfWeek.map((day, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center min-w-[200px] space-y-2"
+              >
+                <div className="text-center font-bold text-black">{day}</div>
+                <div className="relative w-32 h-32 border-2 border-[#DCA543]">
+                  <div className="absolute top-0 right-0 w-10 h-10 border-2 border-[#DCA543] z-10">
+                    <div
+                      contentEditable
+                      className="absolute inset-0 flex justify-center items-center text-white text-center text-xs p-1 focus:outline-none z-20"
+                    >
+                      ??/??
+                    </div>
+                  </div>
+                  <div className="relative w-full h-full text-white text-center p-1 pt-12 overflow-hidden flex flex-col">
+                    <div
+                      contentEditable
+                      className="overflow-y-auto flex-grow focus:outline-none"
+                    >
+                      More events or content here
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          // Grid view for larger screens
+          <div className="grid grid-cols-7 gap-4 p-4">
+            {daysOfWeek.map((day, index) => (
+              <div key={index} className="flex flex-col items-center space-y-2">
+                <div className="text-center font-bold text-black">{day}</div>
+                <div className="relative w-32 h-32 border-2 border-[#DCA543]">
+                  <div className="absolute top-0 right-0 w-10 h-10 border-2 border-[#DCA543] z-10">
+                    <div
+                      contentEditable
+                      className="absolute inset-0 flex justify-center items-center text-white text-center text-xs p-1 focus:outline-none z-20"
+                    >
+                      ??/??
+                    </div>
+                  </div>
+                  <div className="relative w-full h-full text-white text-center p-1 pt-12 overflow-hidden flex flex-col">
+                    <div
+                      contentEditable
+                      className="overflow-y-auto flex-grow focus:outline-none"
+                    >
+                      More events or content here
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Eligibility Section */}
       <section className="bg-[#DCA543] p-5 shadow-lg">
         <h2 className="text-xl text-center font-bold">
           Recruitment & Potential New Member (PNM) Eligibility Requirements
-        </h2>
-        <h2 className="text-center">
-          Any students of the UCF College of Engineering is eligible to be a
-          member of Theta Tau. Mostly, the prime qualification is possessing
-          good character. We do have a few particular qualifications that must
-          be met at the time of initiation (after pledging, at the end of the
-          semester.)
         </h2>
         <ul className="list-disc p-2 pl-6 mt-3 space-y-2 text-center text-black">
           <li>A member must meet the following qualifications:</li>

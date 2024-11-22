@@ -5,3 +5,33 @@
   box-sizing: border-box;
   overflow-x: hidden;
 }
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+  }
+
+  .square {
+    min-width: 6rem;
+  }
+}
+
+/* Apply scrollbar styles globally */
+html {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #dca543 transparent; /* Thumb and track colors for Firefox */
+}
+
+body::-webkit-scrollbar {
+  width: 8px; /* Scrollbar width */
+  height: 8px; /* Horizontal scrollbar height */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #dca543; /* Thumb color */
+  border-radius: 4px; /* Rounded edges */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent; /* Track background color */
+}
