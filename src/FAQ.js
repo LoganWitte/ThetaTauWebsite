@@ -11,7 +11,7 @@ export default function FAQ() {
                 <p>.</p>
             </div>
             <div class="div2">Frequently Asked Questions</div>
-            <div class= "div3" className = "p-5 text-[#DCA543]"> 
+            <div className="flex flex-col items-center" className = "p-5 text-[#DCA543]"> 
 
                 <h1>What is a professional engineering fraternity?</h1>
                 <sub> 

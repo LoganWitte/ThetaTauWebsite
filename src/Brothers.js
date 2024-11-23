@@ -32,8 +32,24 @@ export default function Brothers() {
                 </header>
             </div>
 
-
-            <div style={{ padding: '20px'}}>
+            <div className = "brotherGrid">
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
+                <Brother/>
                 <Brother/>
                 <Brother/>
                 <Brother/>
