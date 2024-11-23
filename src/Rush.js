@@ -16,7 +16,7 @@ export default function Rush() {
   // Detect screen width to switch layout
   useEffect(() => {
     const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 768); // Adjust breakpoint as needed
+      setIsMobileView(window.innerWidth <= 1268); // Adjust breakpoint as needed
     };
 
     handleResize(); // Check on initial render
@@ -62,17 +62,19 @@ export default function Rush() {
                 key={index}
                 className="flex flex-col items-center min-w-[200px] space-y-2"
               >
-                <div className="text-center font-bold text-black">{day}</div>
+                <div className="text-center font-bold text-[#DCA543]">
+                  {day}
+                </div>
                 <div className="relative w-32 h-32 border-2 border-[#DCA543]">
                   <div className="absolute top-0 right-0 w-10 h-10 border-2 border-[#DCA543] z-10">
                     <div
                       contentEditable
-                      className="absolute inset-0 flex justify-center items-center text-white text-center text-xs p-1 focus:outline-none z-20"
+                      className="absolute inset-0 flex justify-center items-center text-[#DCA543] text-center text-xs p-1 focus:outline-none z-20"
                     >
                       ??/??
                     </div>
                   </div>
-                  <div className="relative w-full h-full text-white text-center p-1 pt-12 overflow-hidden flex flex-col">
+                  <div className="relative w-full h-full text-[#DCA543] text-center p-1 pt-12 overflow-hidden flex flex-col">
                     <div
                       contentEditable
                       className="overflow-y-auto flex-grow focus:outline-none"
@@ -89,22 +91,24 @@ export default function Rush() {
           <div className="grid grid-cols-7 gap-4 p-4">
             {daysOfWeek.map((day, index) => (
               <div key={index} className="flex flex-col items-center space-y-2">
-                <div className="text-center font-bold text-black">{day}</div>
+                <div className="text-center font-bold text-[#DCA543]">
+                  {day}
+                </div>
                 <div className="relative w-32 h-32 border-2 border-[#DCA543]">
                   <div className="absolute top-0 right-0 w-10 h-10 border-2 border-[#DCA543] z-10">
                     <div
                       contentEditable
-                      className="absolute inset-0 flex justify-center items-center text-white text-center text-xs p-1 focus:outline-none z-20"
+                      className="absolute inset-0 flex justify-center items-center text-[#DCA543] text-center text-xs p-1 focus:outline-none z-20"
                     >
                       ??/??
                     </div>
                   </div>
-                  <div className="relative w-full h-full text-white text-center p-1 pt-12 overflow-hidden flex flex-col">
+                  <div className="relative w-full h-full text-[#DCA543] text-center p-1 pt-12 overflow-hidden flex flex-col">
                     <div
                       contentEditable
                       className="overflow-y-auto flex-grow focus:outline-none"
                     >
-                      More events or content here
+                      Events
                     </div>
                   </div>
                 </div>
