@@ -19,7 +19,7 @@ export default function Routing() {
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/brothers" element={<Brothers />} />
                         <Route path="/shop" element={<Shop />} />
-                        <Route path="/questions" element={<FAQ />} />
+                        <Route path="/faq" element={<FAQ />} />
                         <Route path="/rush" element={<Rush />} />
                         <Route path="/events" element={<Events />} />
                         <Route path="*" element={<ErrorPage />} />

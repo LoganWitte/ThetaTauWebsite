@@ -32,13 +32,12 @@ export default function Brothers() {
                 </header>
             </div>
 
-            <div className = "bigWhiteText">
-                <h2 className = "bigWhiteText">(Rush Class) 20xx </h2>
-            </div>
 
-            <div style={{ display: 'flex', padding: '20px'}}>
+            <div style={{ padding: '20px'}}>
                 <Brother/>
                 <Brother/>
+                <Brother/>
+
 
             </div>
             
