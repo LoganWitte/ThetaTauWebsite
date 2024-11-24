@@ -6,21 +6,26 @@ import service from './images/servicePicture.png'
 
 export default function Rush() {
 
+    /*Edit this to alter rush title on rush page CHECKHERE*/
+    const recruitmentText = "Recruitment Schedule - January 2025"
+
+    /*Edit this to alter dates & event text on rush page CHECKHERE*/
+    const dailyInfo = [
+      {day: "Monday", date: "1/2", text: "Events Monday"},
+      {day: "Tuesday", date: "3/4", text: "Events Tuesday"},
+      {day: "Wednesday", date: "5/6", text: "Events Wednesday"},
+      {day: "Thursday", date: "7/8", text: "Events Thursday"},
+      {day: "Friday", date: "9/10", text: "Events Friday"},
+      {day: "Saturday", date: "11/12", text: "Events Saturday"},
+      {day: "Sunday", date: "13/14", text: "Events Sunday"},
+    ]
+
+    /*Edit this to alter photo gallery CHECKHERE*/
     const images = [
         { id: 0, src: brotherhood, description: "brotherhood" },
         { id: 1, src: professionalism, description: "professionalism" },
         { id: 2, src: service, description: "service" },
     ];
-
-  const daysOfWeek = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
 
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -62,19 +67,19 @@ export default function Rush() {
             contentEditable
             className="text-3xl text-[#DCA543] h-auto p-1 focus:outline-none"
           >
-            Recruitment Schedule - January 2025
+            {recruitmentText}
           </div>
         </div>
         {isMobileView ? (
           // Single square with horizontal scrolling
           <div className="overflow-x-auto flex gap-4 p-4">
-            {daysOfWeek.map((day, index) => (
+            {dailyInfo.map((day, index) => (
               <div
                 key={index}
                 className="flex flex-col items-center min-w-[200px] space-y-2"
               >
                 <div className="text-center font-bold text-[#DCA543]">
-                  {day}
+                  {day.day}
                 </div>
                 <div className="relative w-32 h-32 border-2 border-[#DCA543]">
                   <div className="absolute top-0 right-0 w-10 h-10 border-2 border-[#DCA543] z-10">
@@ -82,7 +87,7 @@ export default function Rush() {
                       contentEditable
                       className="absolute inset-0 flex justify-center items-center text-[#DCA543] text-center text-xs p-1 focus:outline-none z-20"
                     >
-                      ??/??
+                      {day.date}
                     </div>
                   </div>
                   <div className="relative w-full h-full text-[#DCA543] text-center p-1 pt-12 overflow-hidden flex flex-col">
@@ -90,7 +95,7 @@ export default function Rush() {
                       contentEditable
                       className="overflow-y-auto flex-grow focus:outline-none"
                     >
-                      More events or content here
+                      {day.text}
                     </div>
                   </div>
                 </div>
@@ -100,10 +105,10 @@ export default function Rush() {
         ) : (
           // Grid view for larger screens
           <div className="grid grid-cols-7 gap-4 p-4">
-            {daysOfWeek.map((day, index) => (
+            {dailyInfo.map((day, index) => (
               <div key={index} className="flex flex-col items-center space-y-2">
                 <div className="text-center font-bold text-[#DCA543]">
-                  {day}
+                  {day.day}
                 </div>
                 <div className="relative w-32 h-32 border-2 border-[#DCA543]">
                   <div className="absolute top-0 right-0 w-10 h-10 border-2 border-[#DCA543] z-10">
@@ -111,7 +116,7 @@ export default function Rush() {
                       contentEditable
                       className="absolute inset-0 flex justify-center items-center text-[#DCA543] text-center text-xs p-1 focus:outline-none z-20"
                     >
-                      ??/??
+                      {day.date}
                     </div>
                   </div>
                   <div className="relative w-full h-full text-[#DCA543] text-center p-1 pt-12 overflow-hidden flex flex-col">
@@ -119,7 +124,7 @@ export default function Rush() {
                       contentEditable
                       className="overflow-y-auto flex-grow focus:outline-none"
                     >
-                      Events
+                      {day.text}
                     </div>
                   </div>
                 </div>
