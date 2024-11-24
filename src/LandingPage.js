@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 import cathedral from './images/cathedral.png';
 import brotherhood from './images/brotherhood.png'
@@ -7,6 +8,8 @@ import service from './images/service.png'
 import gear from './images/gear.png'
 import triangle from './images/triangle.png'
 import bortherhoodPicture from './images/brotherhoodPicture.png'
+import professionalismPicture from './images/professionalismPicture.png'
+import servicePicture from './images/servicePicture.png'
 import groupPhoto from './images/groupPhoto.png'
 import interestedSword from './images/interestedSword.png'
 
@@ -88,7 +91,7 @@ export default function LandingPage() {
                             <div className="font-bold text-[2em]">Professionalism</div>
                             <div className="">We develop and nurture engineers with strong communication, problem-solving, collaboration, and leadership skills that we demonstrate in our profession, community, and lives.</div>
                         </div>
-                        <img src={bortherhoodPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
+                        <img src={professionalismPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
                     </div>
                 </div>
 
@@ -101,7 +104,7 @@ export default function LandingPage() {
                             <div className="font-bold text-[2em]">Service</div>
                             <div className="">We are known for our service to our university and larger community. Our service projects create a unifying environment for learning and personal growth for our members.</div>
                         </div>
-                        <img src={bortherhoodPicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
+                        <img src={servicePicture} className="w-[44.5%] m-[0.5%] border border-black" alt="Members of Theta Tau standing together on hike" />
                     </div>
                 </div>
 
@@ -117,9 +120,9 @@ export default function LandingPage() {
             </div>
 
             {/*Interested section*/}
-            <div>
+            <Link to="/rush">
                 <img src={interestedSword} className="my-16" alt="Interested in the brotherhood?" />
-            </div>
+            </Link>
 
         </div>
     )

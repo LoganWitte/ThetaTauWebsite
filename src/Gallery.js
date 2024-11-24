@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const Gallery = (props) => {
 
@@ -9,6 +9,15 @@ const Gallery = (props) => {
     const maxId = images[images.length-1].id;
 
     const [shownIds, setshownIds] = useState(Array.from({ length: numImages }, (_, i) => i));
+    const [shownImages, setShownImages] = useState(images);
+
+    useEffect(() => {
+        let newShownImages = [];
+        shownIds.forEach(id => {
+            newShownImages.push(images[id]);
+        });
+        setShownImages(newShownImages);
+    }, [shownIds, images])
 
     const handleLeftClick = () => {
         const newShownIds = [...shownIds];
@@ -30,8 +39,7 @@ const Gallery = (props) => {
         <div className="flex w-screen items-center justify-between p-2 h-64" style={{backgroundColor: `${backgroundColor}`}}>
             <div className="overflow-hidden ml-[10%] text-4xl font-bold aspect-square w-12 flex items-center justify-center border border-black rounded-full select-none hover:cursor-pointer bg-[#DCA453] hover:bg-opacity-75 mx-2" onClick={handleLeftClick}>{"<"}</div>
             <div className="flex items-center justify-center w-fit max-w-[70%]">
-                {images
-                .filter(image => shownIds.includes(image.id))
+                {shownImages
                 .map(image => 
                     <img className="mx-2 max-h-56 border rounded-lg" style={{borderColor: `${borderColor}`}} key={image.id} alt={image.description} src={image.src} />
                 )}

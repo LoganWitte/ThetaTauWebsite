@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Gallery from './Gallery'
 import brotherhood from './images/brotherhoodPicture.png'
+import professionalism from './images/professionalismPicture.png'
+import service from './images/servicePicture.png'
 
 export default function Rush() {
 
     const images = [
         { id: 0, src: brotherhood, description: "brotherhood" },
-        { id: 1, src: brotherhood, description: "professionalism" },
-        { id: 2, src: brotherhood, description: "service" },
+        { id: 1, src: professionalism, description: "professionalism" },
+        { id: 2, src: service, description: "service" },
     ];
 
   const daysOfWeek = [
