@@ -49,7 +49,7 @@ def get_admin_username():
     conn.close()
     if admin:
         return jsonify(admin)
-    return jsonify({"message": "No admin found"}), 404
+    return jsonify({"message": "No admin found"}), 444
 
 @app.route('/login', methods=['POST'])
 def login():
