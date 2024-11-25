@@ -1,6 +1,7 @@
 export default function Events() {
     return(
     <div className="flex items-center flex-col">
+        <button className="p-2 m-2 border border-black rounded-full bg-white hover:bg-gray-400" onClick={testFunc}>Click Me!</button>
         <div className="m-5 flex flex-col items-center">
             <div className="text-[#DCA543] text-2xl p-1 font-bold">Upcoming Events</div>
             <iframe
