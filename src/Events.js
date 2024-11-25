@@ -1,6 +1,23 @@
+import axios from 'axios'
+
 export default function Events() {
+
+    const testFunc = async () => {
+        try {
+            const response = await axios.get("http://147.182.130.177/");
+            console.log("SUCCESS!");
+            console.log(response.data);
+        }
+        catch (error) {
+            console.log("FAIL")
+            console.log(error);
+            return null;
+        }
+    }
+
     return(
     <div className="flex items-center flex-col">
+        <button className="p-2 m-2 border border-black rounded-full bg-white hover:bg-gray-400" onClick={testFunc}>Click Me!</button>
         <div className="m-5 flex flex-col items-center">
             <div className="text-[#DCA543] text-2xl p-1 font-bold">Upcoming Events</div>
             <iframe
