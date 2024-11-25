@@ -140,10 +140,6 @@ export default function Rush() {
           <li>
             • Must be enrolled in a program leading to an Engineering degree
           </li>
-          <li>
-            • Attend at least one info session and three other events during
-            recruitment
-          </li>
           <li>• Not a member of a competing engineering fraternity/sorority</li>
           <li>• Must not be within 6 months of graduation</li>
           <li>• Have a UCF GPA of at least 2.0 or be a transfer student</li>

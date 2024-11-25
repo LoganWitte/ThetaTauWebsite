@@ -11,6 +11,11 @@ const Navbar = () => {
         }
     };
 
+    function handleReload () {
+        window.location.reload();
+        console.log("DID IT")
+    }
+
     return (
         <div className="bg-[#DCA543] w-full flex items-center justify-between border-b border-black">
             {/*Logo/Title Section*/}

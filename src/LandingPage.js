@@ -10,7 +10,7 @@ import triangle from './images/triangle.png'
 import bortherhoodPicture from './images/brotherhoodPicture.png'
 import professionalismPicture from './images/professionalismPicture.png'
 import servicePicture from './images/servicePicture.png'
-import groupPhoto from './images/groupPhoto.png'
+import whoWeArePicture from './images/whoWeArePicture.png'
 import interestedSword from './images/interestedSword.png'
 
 export default function LandingPage() {
@@ -116,7 +116,7 @@ export default function LandingPage() {
                     <div className="text-3xl font-bold">Who We Are</div>
                     <div>Theta Tau is a co-ed professional engineering fraternity at the University of Central Florida. We are a close knit brotherhood that encourages our members to excel professionally and give back to the surrounding community.</div>
                 </div>
-                <img src={groupPhoto} className="border border-black m-4" alt="Group of Theta Tau members" />
+                <img src={whoWeArePicture} className="border border-black m-4" alt="Group of Theta Tau members" />
             </div>
 
             {/*Interested section*/}
