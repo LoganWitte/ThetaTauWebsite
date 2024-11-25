@@ -5,7 +5,7 @@ function AdminUsername() {
     const [username, setUsername] = useState('');
 
     useEffect(() => {
-        axios.get('http://147.182.130.177///admin_username')
+        axios.get('http://147.182.130.177/admin_username')
             .then(response => {
                 if (response.data.username) {
                     setUsername(response.data.username);
