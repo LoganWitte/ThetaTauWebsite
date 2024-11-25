@@ -30,6 +30,7 @@ const Navbar = () => {
                 <Link to="/rush" className="px-2 hover:underline">Rush</Link>
                 <Link to="/events" className="px-2 hover:underline">Events</Link>
                 <Link to="/faq" className="px-2 hover:underline">FAQ</Link>
+                <Link to="/TEST" className="px-2 hover:underline">TEST</Link>
                 
             </div>
         </div>

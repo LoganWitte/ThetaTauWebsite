@@ -13,8 +13,8 @@ login_manager.init_app(app)
 def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
-        user="your_username",
-        password="your_password",
+        user="ThetaTau",
+        password="ThetaTau2024!",
         database="theta_tau"
     )
 
@@ -35,6 +35,18 @@ def load_user(user_id):
     if user:
         return User(user['id'], user['username'], user['password'])
     return None
+
+@app.route('/admin_username', methods=['GET'])
+def get_admin_username():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT username FROM admins LIMIT 1")
+    admin = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    if admin:
+        return jsonify(admin)
+    return jsonify({"message": "No admin found"}), 404
 
 @app.route('/login', methods=['POST'])
 def login():
