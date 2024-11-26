@@ -52,8 +52,6 @@ export default function Brothers() {
                     <h1>Meet the Brothers</h1>
                 </header>
             </div>
-            
-            <img src={"/var/www/html/ThetaTauWebsite/backend/static/brothers/97.png"} alt="Alt text" />
 
             <div className = "brotherGrid">
                 {brotherData.map(brother => 
