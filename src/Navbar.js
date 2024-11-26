@@ -31,8 +31,18 @@ const Navbar = () => {
                     </div>
                 </Link>
 
+                {/* Hamburger menu icon */}
                 <div className="lg:hidden flex items-center" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                     <img src={hamburger} className="w-6 h-6" alt="Hamburger Menu" />
+                </div>
+
+                {/* Normal links (hidden on small screens) */}
+                <div className="hidden lg:flex space-x-8 ml-auto">
+                    <Link to="/#top" onClick={() => { handleScrollToTop(); handleLinkClick(); }} className="hover:underline">Home</Link>
+                    <Link to="/shop" onClick={handleLinkClick} className="hover:underline">Shop</Link>
+                    <Link to="/brothers" onClick={handleLinkClick} className="hover:underline">Brothers</Link>
+                    <Link to="/rush" onClick={handleLinkClick} className="hover:underline">Rush</Link>
+                    <Link to="/events" onClick={handleLinkClick} className="hover:underline">Events</Link>
                 </div>
             </div>
 
