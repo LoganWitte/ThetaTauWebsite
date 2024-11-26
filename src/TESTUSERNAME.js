@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 function AdminUsername() {
     const [username, setUsername] = useState('');
 
     useEffect(() => {
-        axios.get('/admin_username')
+        fetch('/admin_username')
             .then(response => {
-                if (response.data.username) {
-                    setUsername(response.data.username);
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.username) {
+                    setUsername(data.username);
                 } else {
                     setUsername('No admin found');
                 }

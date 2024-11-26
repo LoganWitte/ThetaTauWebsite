@@ -4,7 +4,13 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 import mysql.connector
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+
+@app.route('/home')
+def home():
+    return jsonify(message="Welcome to the Flask backend!") 
+
+
+"""app.secret_key = 'your_secret_key'
 bcrypt = Bcrypt(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -179,4 +185,4 @@ def add_rush_event():
     return jsonify({"message": "Rush event added successfully"}), 201
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) """
