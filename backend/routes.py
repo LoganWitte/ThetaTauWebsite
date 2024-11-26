@@ -135,3 +135,31 @@ def add_shop_item():
             conn.commit()
     
     return jsonify({"message": "Shop item added successfully"}), 201
+
+@app_routes.route('/update_rush_text', methods=['POST'])
+def update_rush_text():
+    new_text = request.form.get('text')
+    
+    if not new_text:
+        return jsonify({"error": "Text is required"}), 400
+    
+    # Update the rush text in the database
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute("UPDATE rush_text SET text = %s", (new_text,))
+            conn.commit()
+    
+    return jsonify({"message": "Rush text updated successfully"}), 200
+
+@app_routes.route('/rush', methods=['GET'])
+def get_rush_text():
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT text FROM rush_text LIMIT 1")
+            rush_text = cursor.fetchone()
+            if rush_text:
+                return jsonify(rush_text)
+            else:
+                return jsonify({"error": "No rush text found"}), 404
