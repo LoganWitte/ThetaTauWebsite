@@ -70,10 +70,10 @@ export default function Rush() {
       <section className="bg-[#DCA543] text-black p-5 shadow-lg">
         <h2 className="text-2xl">What is Rush?</h2>
         <p className="mt-3">
-          Rush is a recruitment process where students get to know more about
-          Theta Tau, its values, and its activities. It's an opportunity to see
-          if Theta Tau is the right fit for you, and to meet potential new
-          members!
+          Rush happens in the first few weeks at the beginning of the fall and 
+          spring semesters when Theta Tau invites new members to join. It’s an 
+          opportunity for students in engineering and technology majors to connect 
+          with the fraternity and learn more about what it stands for.
         </p>
       </section>
 
