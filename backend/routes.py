@@ -51,7 +51,7 @@ def get_brothers():
             return jsonify(brothers)
     return ("error returning brohters")
 
-BROTHERS_FOLDER = os.path.join(os.getcwd(), 'images', 'brothers')
+BROTHERS_FOLDER = '/var/www/html/ThetaTauWebsite/backend/static/brothers'
 os.makedirs(BROTHERS_FOLDER, exist_ok=True)
 
 @app_routes.route('/add_brother', methods=['POST'])
@@ -73,13 +73,16 @@ def add_brother():
     image_path = os.path.join(BROTHERS_FOLDER, image.filename)
     image.save(image_path)
     
+    # Construct the relative image path
+    relative_image_path = f"/ThetaTauWebsite/backend/static/brothers/{image.filename}"
+    
     # Insert the new brother into the database
     conn = get_db_connection()
     with conn:
         with conn.cursor() as cursor:
             cursor.execute(
                 "INSERT INTO brothers (name, pledge_class, image) VALUES (%s, %s, %s)",
-                (name, pledge_class, image_path)
+                (name, pledge_class, relative_image_path)
             )
             conn.commit()
     
