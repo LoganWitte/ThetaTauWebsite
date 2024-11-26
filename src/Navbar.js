@@ -29,6 +29,7 @@ const Navbar = () => {
                 <Link to="/brothers" className="px-2 hover:underline">Brothers</Link>
                 <Link to="/rush" className="px-2 hover:underline">Rush</Link>
                 <Link to="/events" className="px-2 hover:underline">Events</Link>
+                <Link to="/admin" className="px-2 hover:underline">Admin Panel</Link>
             </div>
         </div>
     );
