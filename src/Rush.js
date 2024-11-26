@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Gallery from './Gallery'
-import brotherhood from './images/brotherhoodPicture.png'
-import professionalism from './images/professionalismPicture.png'
-import service from './images/servicePicture.png'
+
+import gallery_1 from './images/gallery_1.jpg'
+import gallery_2 from './images/gallery_2.jpg'
+import gallery_3 from './images/gallery_3.PNG'
+import gallery_4 from './images/gallery_4.jpg'
+import gallery_5 from './images/gallery_5.jpeg'
+import gallery_6 from './images/gallery_6.JPG'
 
 export default function Rush() {
 
@@ -20,11 +24,14 @@ export default function Rush() {
       {day: "Sunday", date: "13/14", text: "Events Sunday"},
     ]
 
-    /*Edit this to alter photo gallery CHECKHERE*/
+    /*Edit this to alter photo gallery*/
     const images = [
-        { id: 0, src: brotherhood, description: "brotherhood" },
-        { id: 1, src: professionalism, description: "professionalism" },
-        { id: 2, src: service, description: "service" },
+        {id: 0, src: gallery_1, description: "Gallery Image 1"},
+        {id: 1, src: gallery_2, description: "Gallery Image 2"},
+        {id: 2, src: gallery_3, description: "Gallery Image 3"},
+        {id: 3, src: gallery_4, description: "Gallery Image 4"},
+        {id: 4, src: gallery_5, description: "Gallery Image 5"},
+        {id: 5, src: gallery_6, description: "Gallery Image 6"}
     ];
 
   const [isMobileView, setIsMobileView] = useState(false);
