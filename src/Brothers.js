@@ -9,7 +9,7 @@ import { getBrothers } from './API'
 
 export default function Brothers() {
 
-    const [brotherData, setBrotherData] = useState(null);
+    const [brotherData, setBrotherData] = useState([]);
     const [scrollPosition, setScrollPosition] = useState(0);
 
     useEffect(() => {

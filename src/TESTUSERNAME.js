@@ -4,7 +4,7 @@ import { getBrothers } from './API';
 
 function AdminUsername() {
     const [username, setUsername] = useState('');
-    const [brothersData, setBrothersData] = useState(null);
+    const [brothersData, setBrothersData] = useState([]);
 
     async function handleBrothersClick() {
         try {
