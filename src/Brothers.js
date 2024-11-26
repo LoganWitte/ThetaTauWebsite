@@ -2,8 +2,6 @@ import gear from './images/gear.png'
 import Brother from './Brother'
 import { useState, useEffect } from "react"
 
-import member from './images/member.jpg'
-
 import { getBrothers } from './API'
 
 
@@ -22,7 +20,9 @@ export default function Brothers() {
     useEffect(() => {
         const fetchBrothers = async () => {
             const newBrotherData = await getBrothers();
-            setBrotherData(newBrotherData);
+            if(newBrotherData) {
+                setBrotherData(newBrotherData);
+            }
         }
         fetchBrothers();
     }, [])
@@ -58,8 +58,6 @@ export default function Brothers() {
                     <Brother name={brother.name} image={brother.image} class={brother.pledge_class} />
                 )}
             </div>
-            
-
         </div>
     )
 }

@@ -67,9 +67,9 @@ export const getRushText = async () => {
     }
 }
 
-export const getDailyInfo = async () => {
+export const getDayInfo = async () => {
     try {
-        const response = await axios.get(`${url}/dailyInfo`);
+        const response = await axios.get(`${url}/get_day_info`);
         return response.data;
     } catch (error) {
         handleError(error);
@@ -90,12 +90,44 @@ export const addBrother = async (name, pledge_class, image) => {
         return null;
     }
 }
-export const removeBrother = async (brotherID) => {
 
+export const addShopItem = async (name, description, sizes, image) => {
+    const formData = new FormData();
+    formData.append("product_name", name);
+    formData.append("description", description);
+    formData.append("size", sizes);
+    formData.append("image", image);
+    try {
+        const response = await axios.post(`${url}/add_shop_item`, formData);
+        return response.data;
+    } catch (error) {
+        handleError(error);
+        return null;
+    }
 }
-export const updateRushText = async (newText) => {
 
+export const updateRushText = async (newRushText) => {
+    const formData = new FormData();
+    formData.append("text", newRushText);
+    try {
+        const response = await axios.post(`${url}/update_rush_text`, formData);
+        return response.data;
+    } catch (error) {
+        handleError(error);
+        return null;
+    }
 }
-export const updateDailyInfo = async (newDailyInfo) => {
 
+export const updateDayInfo = async (day, newDate, newText) => {
+    const formData = new FormData();
+    formData.append("day", day);
+    formData.append("date", newDate);
+    formData.append("text", newText);
+    try {
+        const response = await axios.post(`${url}/update_day_info`, formData);
+        return response.data;
+    } catch (error) {
+        handleError(error);
+        return null;
+    }
 }
