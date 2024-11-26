@@ -46,6 +46,6 @@ def get_brothers():
     with conn:
         with conn.cursor() as cursor:
             cursor.execute("SELECT * FROM brothers")
-            brothers = cursor.fetchone()
+            brothers = cursor.fetchall()
             return jsonify(brothers)
     return ("error returning brohters")
