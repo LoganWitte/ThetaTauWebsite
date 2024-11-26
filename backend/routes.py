@@ -1,7 +1,8 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import pymysql.cursors
+import os
 
 app_routes = Blueprint('app_routes',__name__)
 
@@ -49,3 +50,37 @@ def get_brothers():
             brothers = cursor.fetchall()
             return jsonify(brothers)
     return ("error returning brohters")
+
+BROTHERS_FOLDER = os.path.join(os.getcwd(), 'images', 'brothers')
+os.makedirs(BROTHERS_FOLDER, exist_ok=True)
+
+@app_routes.route('/add_brother', methods=['POST'])
+def add_brother():
+    if 'image' not in request.files:
+        return jsonify({"error": "No image part"}), 400
+    
+    image = request.files['image']
+    if image.filename == '':
+        return jsonify({"error": "No selected image"}), 400
+    
+    name = request.form.get('name')
+    pledge_class = request.form.get('pledge_class')
+    
+    if not name or not pledge_class:
+        return jsonify({"error": "Name and pledge class are required"}), 400
+    
+    # Save the image to the brothers folder
+    image_path = os.path.join(BROTHERS_FOLDER, image.filename)
+    image.save(image_path)
+    
+    # Insert the new brother into the database
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "INSERT INTO brothers (name, pledge_class, image) VALUES (%s, %s, %s)",
+                (name, pledge_class, image_path)
+            )
+            conn.commit()
+    
+    return jsonify({"message": "Brother added successfully"}), 201
