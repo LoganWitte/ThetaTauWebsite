@@ -6,7 +6,11 @@ import twitter from "./images/twitter.png";
 
 const Footer = () => {
   return (
-    <div className="border-t border-black flex align-center justify-center">
+    <div className="border-t border-black flex align-center justify-center relative">
+      
+      {/*CHANGE LATER THIS IS NOT A SECURE WAY TO ACCESS STUFF CHANGE LATER!!!!!!!!!!*/}
+      <Link to="/admin" className="absolute bottom-0 right-0 w-8 h-8 hover:cursor-pointer bg-orange-500 bg-opacity-5" />
+      
       <div className="p-3">
         <strong>Theta Tau</strong>
         <br />
