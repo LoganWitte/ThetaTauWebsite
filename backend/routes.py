@@ -49,4 +49,4 @@ def get_brothers():
             cursor.execute("SELECT * FROM brothers")
             brothers = cursor.fetchone()
             return(brothers)
-    return ("error returning borhters")
+    return ("error returning brohters")
