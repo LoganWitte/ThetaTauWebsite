@@ -8,31 +8,41 @@ import gallery_4 from './images/gallery_4.jpg'
 import gallery_5 from './images/gallery_5.jpeg'
 import gallery_6 from './images/gallery_6.JPG'
 
+import { getRushText, getDayInfo } from "./API";
+
 export default function Rush() {
 
-    /*Edit this to alter rush title on rush page CHECKHERE*/
-    const recruitmentText = "Recruitment Schedule - January 2025"
+  const [rushText, setRushText] = useState("");
+  const [dayInfo, setDayInfo] = useState([]);
 
-    /*Edit this to alter dates & event text on rush page CHECKHERE*/
-    const dailyInfo = [
-      {day: "Monday", date: "1/2", text: "Events Monday"},
-      {day: "Tuesday", date: "3/4", text: "Events Tuesday"},
-      {day: "Wednesday", date: "5/6", text: "Events Wednesday"},
-      {day: "Thursday", date: "7/8", text: "Events Thursday"},
-      {day: "Friday", date: "9/10", text: "Events Friday"},
-      {day: "Saturday", date: "11/12", text: "Events Saturday"},
-      {day: "Sunday", date: "13/14", text: "Events Sunday"},
-    ]
+  /*Handles data fetching*/
+  useEffect(() => {
+    const fetchRushText = async () => {
+        const newRushText = await getRushText();
+        if(newRushText) {
+            setRushText(newRushText);
+        }
+    }
+    const fetchDayInfo = async () => {
+      const newDayInfo = await getDayInfo();
+      console.log(newDayInfo);
+      if(newDayInfo) {
+          setDayInfo(newDayInfo);
+      }
+    }
+    fetchRushText();
+    fetchDayInfo();
+}, [])
 
-    /*Edit this to alter photo gallery*/
-    const images = [
-        {id: 0, src: gallery_1, description: "Gallery Image 1"},
-        {id: 1, src: gallery_2, description: "Gallery Image 2"},
-        {id: 2, src: gallery_3, description: "Gallery Image 3"},
-        {id: 3, src: gallery_4, description: "Gallery Image 4"},
-        {id: 4, src: gallery_5, description: "Gallery Image 5"},
-        {id: 5, src: gallery_6, description: "Gallery Image 6"}
-    ];
+  /*Edit this to alter photo gallery*/
+  const images = [
+    { id: 0, src: gallery_1, description: "Gallery Image 1" },
+    { id: 1, src: gallery_2, description: "Gallery Image 2" },
+    { id: 2, src: gallery_3, description: "Gallery Image 3" },
+    { id: 3, src: gallery_4, description: "Gallery Image 4" },
+    { id: 4, src: gallery_5, description: "Gallery Image 5" },
+    { id: 5, src: gallery_6, description: "Gallery Image 6" }
+  ];
 
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -73,13 +83,13 @@ export default function Rush() {
           <div
             className="text-3xl text-[#DCA543] h-auto p-1 focus:outline-none"
           >
-            {recruitmentText}
+            {rushText.text}
           </div>
         </div>
         {isMobileView ? (
           // Single square with horizontal scrolling
           <div className="overflow-x-auto flex gap-4 p-4">
-            {dailyInfo.map((day, index) => (
+            {dayInfo.map((day, index) => (
               <div
                 key={index}
                 className="flex flex-col items-center min-w-[200px] space-y-2"
@@ -109,7 +119,7 @@ export default function Rush() {
         ) : (
           // Grid view for larger screens
           <div className="grid grid-cols-7 gap-4 p-4">
-            {dailyInfo.map((day, index) => (
+            {dayInfo.map((day, index) => (
               <div key={index} className="flex flex-col items-center space-y-2">
                 <div className="text-center font-bold text-[#DCA543]">
                   {day.day}
@@ -154,7 +164,7 @@ export default function Rush() {
       </section>
 
       {/* Photo Gallery Section */}
-      <Gallery images={images} numImages={3} backgroundColor={"#7B1A1A"} borderColor={"#000000"}/>
+      <Gallery images={images} numImages={3} backgroundColor={"#7B1A1A"} borderColor={"#000000"} />
     </>
   );
 }
