@@ -4,10 +4,10 @@ function AdminUsername() {
     const [username, setUsername] = useState('');
 
     useEffect(() => {
-        fetch('/admin_username')
+        fetch('/api/admin_username')
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                    throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
