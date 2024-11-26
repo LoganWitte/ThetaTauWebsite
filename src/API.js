@@ -93,9 +93,9 @@ export const addBrother = async (name, pledge_class, image) => {
 
 export const addShopItem = async (name, description, sizes, image) => {
     const formData = new FormData();
-    formData.append("name", name);
+    formData.append("product_name", name);
     formData.append("description", description);
-    formData.append("sizes", sizes);
+    formData.append("size", sizes);
     formData.append("image", image);
     try {
         const response = await axios.post(`${url}/add_shop_item`, formData);
@@ -108,7 +108,7 @@ export const addShopItem = async (name, description, sizes, image) => {
 
 export const updateRushText = async (newRushText) => {
     const formData = new FormData();
-    formData.append("newRushText", newRushText);
+    formData.append("text", newRushText);
     try {
         const response = await axios.post(`${url}/update_rush_text`, formData);
         return response.data;
