@@ -46,10 +46,10 @@ def get_brothers():
     conn = get_db_connection()
     with conn:
         with conn.cursor() as cursor:
-            cursor.execute("SELECT * FROM brothers")
+            cursor.execute("SELECT * FROM brothers ORDER BY pledge_class DESC, name ASC")
             brothers = cursor.fetchall()
             return jsonify(brothers)
-    return ("error returning brohters")
+    return ("error returning brothers")
 
 BROTHERS_FOLDER = '/var/www/html/ThetaTauWebsite/backend/static/brothers'
 os.makedirs(BROTHERS_FOLDER, exist_ok=True)
