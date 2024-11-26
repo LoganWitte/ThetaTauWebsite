@@ -40,3 +40,13 @@ def get_admin_username():
             admin = cursor.fetchone()
             return(admin)
     return ("message No admin found")
+
+@app_routes.route('/brothers', methods=['GET'])
+def get_brothers():
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM brothers")
+            brothers = cursor.fetchone()
+            return(brothers)
+    return ("error returning brohters")
