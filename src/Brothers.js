@@ -13,9 +13,10 @@ export default function Brothers() {
     const [scrollPosition, setScrollPosition] = useState(0);
 
     useEffect(() => {
-        console.log(`brotherData=${brotherData}`);
+        brotherData.forEach((brother, i) => {
+            console.log(`brotherData[${i}]=${brother}`);
+        })
     }, [brotherData])
-    
 
     /*Handles data fetching*/
     useEffect(() => {
@@ -54,7 +55,7 @@ export default function Brothers() {
 
             <div className = "brotherGrid">
                 {brotherData.map(brother => 
-                    <Brother name={brother.name} image={brother.image} class={brother.class} />
+                    <Brother name={brother.name} image={brother.image} class={brother.pledge_class} />
                 )}
             </div>
             
