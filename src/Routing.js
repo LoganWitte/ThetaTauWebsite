@@ -10,7 +10,7 @@ import Events from "./Events";
 import Footer from "./Footer";
 import About from './About';
 import Login from './Login';
-import TEST from './TESTUSERNAME';
+import AdminPanel from "./AdminPanel";
 
 export default function Routing() {
     return(
@@ -27,7 +27,7 @@ export default function Routing() {
                         <Route path="/events" element={<Events />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/login" element={<Login />} />
-                        <Route path="/TEST" element={<TEST />} />
+                        <Route path="/admin" element={<AdminPanel />} />
                         <Route path="*" element={<ErrorPage />} />
                     </Routes>
                     <Footer />

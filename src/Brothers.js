@@ -4,35 +4,35 @@ import { useState, useEffect } from "react"
 
 import member from './images/member.jpg'
 
+import { getBrothers } from './API'
+
 
 export default function Brothers() {
 
-    /*Edit this to alter brothers on brothers page CHECKHERE*/
-    const brothers = [
-        {id: 0, name: "Name 1", image: member, class: "2023"},
-        {id: 1, name: "Name 2", image: member, class: "2023"},
-        {id: 2, name: "Name 3", image: member, class: "2023"},
-        {id: 3, name: "Name 4", image: member, class: "2023"},
-        {id: 4, name: "Name 5", image: member, class: "2023"},
-        {id: 5, name: "Name 6", image: member, class: "2023"},
-        {id: 6, name: "Name 7", image: member, class: "2023"},
-        {id: 7, name: "Name 8", image: member, class: "2023"},
-        {id: 8, name: "Name 9", image: member, class: "2023"},
-        {id: 9, name: "Name 10", image: member, class: "2023"},
-        {id: 10, name: "Name 11", image: member, class: "2023"},
-        {id: 11, name: "Name 12", image: member, class: "2023"},
-        {id: 12, name: "Name 13", image: member, class: "2023"},
-        {id: 13, name: "Name 14", image: member, class: "2023"},
-        {id: 14, name: "Name 15", image: member, class: "2023"},
-    ]
-
+    const [brotherData, setBrotherData] = useState([]);
     const [scrollPosition, setScrollPosition] = useState(0);
 
-    function handleScroll(container) {
-        setScrollPosition(container.scrollTop / (container.scrollHeight - container.clientHeight));
-    }
-
     useEffect(() => {
+        brotherData.forEach((brother, i) => {
+            console.log(`brotherData[${i}]=${brother}`);
+        })
+    }, [brotherData])
+
+    /*Handles data fetching*/
+    useEffect(() => {
+        const fetchBrothers = async () => {
+            const newBrotherData = await getBrothers();
+            setBrotherData(newBrotherData);
+        }
+        fetchBrothers();
+    }, [])
+    
+    /*Handles Scroll Behavior*/
+    useEffect(() => {
+
+        function handleScroll(container) {
+            setScrollPosition(container.scrollTop / (container.scrollHeight - container.clientHeight));
+        }
 
         const outerContainer = document.getElementById("outerContainer");
         outerContainer.addEventListener("scroll", () => handleScroll(outerContainer));
@@ -54,8 +54,8 @@ export default function Brothers() {
             </div>
 
             <div className = "brotherGrid">
-                {brothers.map(brother => 
-                    <Brother />
+                {brotherData.map(brother => 
+                    <Brother name={brother.name} image={brother.image} class={brother.pledge_class} />
                 )}
             </div>
             
