@@ -58,8 +58,6 @@ export default function Brothers() {
                     <Brother name={brother.name} image={brother.image} class={brother.pledge_class} />
                 )}
             </div>
-            
-
         </div>
     )
 }

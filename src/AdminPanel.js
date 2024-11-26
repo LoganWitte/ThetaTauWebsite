@@ -111,7 +111,7 @@ const AdminPanel = () => {
                 {brotherImagePreview && 
                     <img src={brotherImagePreview} alt="Preview" />
                 }
-                <button className="bg-white border border-black mt-2" onClick={handleAddBrotherSubmit}>Submit</button>
+                <button className="bg-white border border-black mt-2 hover:bg-gray-200" onClick={handleAddBrotherSubmit}>Submit</button>
             </div>
 
             {/*Add Shop Item*/}
@@ -136,7 +136,7 @@ const AdminPanel = () => {
                 {shopItemImagePreview && 
                     <img src={shopItemImagePreview} alt="Preview" />
                 }
-                <button className="bg-white border border-black mt-2" onClick={handleAddShopItemSubmit}>Submit</button>
+                <button className="bg-white border border-black mt-2 hover:bg-gray-200" onClick={handleAddShopItemSubmit}>Submit</button>
             </div>
 
             {/*Update Rush Text*/}
@@ -146,7 +146,7 @@ const AdminPanel = () => {
                     New Rush Text:
                     <input type="text" onChange={(e) => setNewRushText(e.target.value)} className="border border-black ml-2"/>
                 </div>
-                <button className="bg-white border border-black mt-2" onClick={handleUpdateRushTextSubmit}>Submit</button>
+                <button className="bg-white border border-black mt-2 hover:bg-gray-200" onClick={handleUpdateRushTextSubmit}>Submit</button>
             </div>
 
             {/*Update Day Info*/}
@@ -172,7 +172,7 @@ const AdminPanel = () => {
                     New Day Text:
                     <input type="text" onChange={(e) => setNewText(e.target.value)} className="border border-black ml-2"/>
                 </div>
-                <button className="bg-white border border-black mt-2" onClick={handleUpdateDayInfoSubmit}>Submit</button>
+                <button className="bg-white border border-black mt-2 hover:bg-gray-200" onClick={handleUpdateDayInfoSubmit}>Submit</button>
             </div>
 
         </div>
