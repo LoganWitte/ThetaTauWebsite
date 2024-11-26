@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import pymysql.cursors
@@ -12,7 +12,6 @@ def home():
 @app_routes.route("/hello",methods=['GET','PUT'])
 def hello_world():
     return "<p>Hello, World!</p>"
-
 
 # Database connection
 def get_db_connection():
@@ -48,5 +47,5 @@ def get_brothers():
         with conn.cursor() as cursor:
             cursor.execute("SELECT * FROM brothers")
             brothers = cursor.fetchone()
-            return(brothers)
+            return jsonify(brothers)
     return ("error returning brohters")
