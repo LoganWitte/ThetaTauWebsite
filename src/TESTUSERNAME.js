@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import {getShopItems, getBrothers, getRushText, getDailyInfo} from "./API"
-
 function AdminUsername() {
     const [username, setUsername] = useState('');
 
     useEffect(() => {
-        axios.get('https://ucfthetatau.com/admin_username')
+        fetch('/api/admin_username')
             .then(response => {
-                if (response.data.username) {
-                    setUsername(response.data.username);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.username) {
+                    setUsername(data.username);
                 } else {
                     setUsername('No admin found');
                 }
