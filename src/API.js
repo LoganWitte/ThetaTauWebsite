@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://ucfthetatau.com"
+const url = "https://ucfthetatau.com/api"
 
 // Utility function for handling errors
 const handleError = (error) => {
@@ -13,6 +13,7 @@ const handleError = (error) => {
     }
 }
 
+//
 export const login = async (username, password) => {
     const formData = new FormData();
     formData.append('username', username);
