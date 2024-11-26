@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+
+import { getBrothers } from './API';
+
 function AdminUsername() {
     const [username, setUsername] = useState('');
 
@@ -27,13 +30,13 @@ function AdminUsername() {
         <div>
             <h1>Admin Username</h1>
             <p>{username}</p>
-            <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={() => {console.log(getShopItems())}}>getShopItems</button>
+            <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={() => {}}>getShopItems</button>
             <br />
             <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={() => {console.log(getBrothers())}}>getBrothers</button>
             <br />
-            <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={() => {console.log(getRushText())}}>getRushText</button>
+            <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={() => {}}>getRushText</button>
             <br />
-            <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={() => {console.log(getDailyInfo())}}>getDailyInfo</button>
+            <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={() => {}}>getDailyInfo</button>
             <br />
         </div>
     );
