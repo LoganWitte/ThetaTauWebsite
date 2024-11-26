@@ -163,3 +163,34 @@ def get_rush_text():
                 return jsonify(rush_text)
             else:
                 return jsonify({"error": "No rush text found"}), 404
+
+@app_routes.route('/update_day_info', methods=['POST'])
+def update_day_info():
+    day = request.form.get('day')
+    date = request.form.get('date')
+    text = request.form.get('text')
+    
+    if not day or not date or not text:
+        return jsonify({"error": "Day, date, and text are required"}), 400
+    
+    # Update the day info in the database
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "UPDATE rush_events SET date = %s, text = %s WHERE day = %s",
+                (date, text, day)
+            )
+            conn.commit()
+    
+    return jsonify({"message": "Day info updated successfully"}), 200
+
+@app_routes.route('/get_day_info', methods=['GET'])
+def get_day_info():
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM rush_events")
+            day_info = cursor.fetchall()
+            return jsonify(day_info)
+    return jsonify({"error": "Error retrieving day info"}), 500
