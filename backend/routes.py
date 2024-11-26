@@ -13,6 +13,7 @@ def home():
 def hello_world():
     return "<p>Hello, World!</p>"
 
+
 # Database connection
 def get_db_connection():
     return pymysql.connect(
