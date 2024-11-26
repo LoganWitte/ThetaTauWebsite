@@ -56,7 +56,7 @@ function AdminUsername() {
             <p>{username}</p>
             <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={() => {}}>getShopItems</button>
             <br />
-            <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={handleBrothersClick}>{brothersData ? brothersData.name : 'Loading...'}</button>
+            <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={handleBrothersClick}>{brothersData[1] ? brothersData[1].name : 'Loading...'}</button>
             <br />
             <button className="bg-white text-black border-black p-2 m-2 rounded-full border" onClick={() => {}}>getRushText</button>
             <br />
