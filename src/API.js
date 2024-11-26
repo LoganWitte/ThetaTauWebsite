@@ -77,8 +77,18 @@ export const getDailyInfo = async () => {
     }
 }
 
-export const addBrother = async (brotherName, classYear, image) => {
-
+export const addBrother = async (name, pledge_class, image) => {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('pledge_class', pledge_class);
+    formData.append('image', image);
+    try {
+        const response = await axios.post(`${url}/add_brother`, formData);
+        return response.data;
+    } catch (error) {
+        handleError(error);
+        return null;
+    }
 }
 export const removeBrother = async (brotherID) => {
 
