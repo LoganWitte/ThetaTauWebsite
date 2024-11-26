@@ -87,3 +87,51 @@ def add_brother():
             conn.commit()
     
     return jsonify({"message": "Brother added successfully"}), 201
+
+@app_routes.route('/shop', methods=['GET'])
+def get_shop_items():
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM shop")
+            shop_items = cursor.fetchall()
+            return jsonify(shop_items)
+    return ("error returning shop items")
+
+SHOP_FOLDER = '/var/www/html/ThetaTauWebsite/backend/static/shop'
+os.makedirs(SHOP_FOLDER, exist_ok=True)
+
+@app_routes.route('/add_shop_item', methods=['POST'])
+def add_shop_item():
+    if 'image' not in request.files:
+        return jsonify({"error": "No image part"}), 400
+    
+    image = request.files['image']
+    if image.filename == '':
+        return jsonify({"error": "No selected image"}), 400
+    
+    product_name = request.form.get('product_name')
+    description = request.form.get('description')
+    size = request.form.get('size')
+    
+    if not product_name or not description or not size:
+        return jsonify({"error": "Product name, description, and size are required"}), 400
+    
+    # Save the image to the shop folder
+    image_path = os.path.join(SHOP_FOLDER, image.filename)
+    image.save(image_path)
+    
+    # Construct the relative image path
+    relative_image_path = f"/ThetaTauWebsite/backend/static/shop/{image.filename}"
+    
+    # Insert the new shop item into the database
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "INSERT INTO shop (product_name, description, size, image) VALUES (%s, %s, %s, %s)",
+                (product_name, description, size, relative_image_path)
+            )
+            conn.commit()
+    
+    return jsonify({"message": "Shop item added successfully"}), 201
