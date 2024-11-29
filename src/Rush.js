@@ -25,7 +25,6 @@ export default function Rush() {
     }
     const fetchDayInfo = async () => {
       const newDayInfo = await getDayInfo();
-      console.log(newDayInfo);
       if(newDayInfo) {
           setDayInfo(newDayInfo);
       }
@@ -98,7 +97,7 @@ export default function Rush() {
                   {day.day}
                 </div>
                 <div className="relative w-32 h-32 border-2 border-[#DCA543]">
-                  <div className="absolute top-0 right-0 w-10 h-10 border-2 border-[#DCA543] z-10">
+                  <div className="absolute top-0 right-0 w-10 h-10 border-2 border-[#DCA543] border-t-0 border-r-0 z-10">
                     <div
                       className="absolute inset-0 flex justify-center items-center text-[#DCA543] text-center text-xs p-1 focus:outline-none z-20"
                     >
@@ -125,7 +124,7 @@ export default function Rush() {
                   {day.day}
                 </div>
                 <div className="relative w-32 h-32 border-2 border-[#DCA543]">
-                  <div className="absolute top-0 right-0 w-10 h-10 border-2 border-[#DCA543] z-10">
+                  <div className="absolute top-0 right-0 w-10 h-10 border-2 border-[#DCA543] border-t-0 border-r-0 z-10">
                     <div
                       className="absolute inset-0 flex justify-center items-center text-[#DCA543] text-center text-xs p-1 focus:outline-none z-20"
                     >

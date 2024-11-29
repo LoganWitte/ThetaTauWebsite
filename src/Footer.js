@@ -14,14 +14,9 @@ const Footer = () => {
       <div className="p-3">
         <strong>Theta Tau</strong>
         <br />
-        <a
-          href="/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
+        <Link to="/">
           Rho Gamma Chapter
-        </a>
+        </Link>
         <br />
         <a
           href="https://www.ucf.edu/"
@@ -32,14 +27,18 @@ const Footer = () => {
           University of Central Florida
         </a>
         <br />
+
+        {/* Removing for now, not sure if needed later
         <a
           href="https://www.thetataupg.org/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
         >
-          2020 Theta Tau Rho Gamma Chapter
+          Tau Rho Gamma Chapter
         </a>
+        */}
+        
       </div>
       <div className="p-3">
         <strong>General</strong>
@@ -53,7 +52,7 @@ const Footer = () => {
           National Theta Tau
         </a>
         <br />
-        <Link to="/about"
+        <Link to="/"
           className="hover:underline"
         >
           About

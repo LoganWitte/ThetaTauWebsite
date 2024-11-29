@@ -8,7 +8,6 @@ import Rush from "./Rush";
 import Navbar from "./Navbar";
 import Events from "./Events";
 import Footer from "./Footer";
-import About from './About';
 import Login from './Login';
 import AdminPanel from "./AdminPanel";
 
@@ -25,7 +24,6 @@ export default function Routing() {
                         <Route path="/faq" element={<FAQ />} />
                         <Route path="/rush" element={<Rush />} />
                         <Route path="/events" element={<Events />} />
-                        <Route path="/about" element={<About />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/admin" element={<AdminPanel />} />
                         <Route path="*" element={<ErrorPage />} />

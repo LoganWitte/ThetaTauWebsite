@@ -10,12 +10,6 @@ export default function Brothers() {
     const [brotherData, setBrotherData] = useState([]);
     const [scrollPosition, setScrollPosition] = useState(0);
 
-    useEffect(() => {
-        brotherData.forEach((brother, i) => {
-            console.log(`brotherData[${i}]=${brother}`);
-        })
-    }, [brotherData])
-
     /*Handles data fetching*/
     useEffect(() => {
         const fetchBrothers = async () => {
