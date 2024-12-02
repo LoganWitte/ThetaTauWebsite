@@ -141,9 +141,15 @@ def add_shop_item():
     product_name = request.form.get('product_name')
     description = request.form.get('description')
     size = request.form.get('size')
+    price = request.form.get('price')
     
-    if not product_name or not description or not size:
-        return jsonify({"error": "Product name, description, and size are required"}), 400
+    if not product_name or not description or not size or not price:
+        return jsonify({"error": "Product name, description, size, and price are required"}), 400
+    
+    try:
+        price = float(price)
+    except ValueError:
+        return jsonify({"error": "Invalid price format"}), 400
     
     # Save the image to the shop folder
     image_path = os.path.join(SHOP_FOLDER, image.filename)
@@ -157,8 +163,8 @@ def add_shop_item():
     with conn:
         with conn.cursor() as cursor:
             cursor.execute(
-                "INSERT INTO shop (product_name, description, size, image) VALUES (%s, %s, %s, %s)",
-                (product_name, description, size, relative_image_path)
+                "INSERT INTO shop (product_name, description, size, price, image) VALUES (%s, %s, %s, %s, %s)",
+                (product_name, description, size, price, relative_image_path)
             )
             conn.commit()
     
