@@ -13,29 +13,19 @@ const handleError = (error) => {
     }
 }
 
-//
-export const login = async (username, password) => {
+// Input: username/password, output: admin JWT
+export const adminLogin = async (username, password) => {
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
     try {
-        const response = await axios.post(`${url}/login`, formData);
+        const response = await axios.post(`${url}/admin_login`, formData);
         return response.data;
     } catch (error) {
         handleError(error);
         return null;
     }
 }
-export const logout = async () => {
-    try {
-        const response = await axios.get(`${url}/logout`);
-        return response.data;
-    } catch (error) {
-        handleError(error);
-        return null;
-    }
-}
-
 
 export const getShopItems = async () => {
     try {
@@ -77,13 +67,13 @@ export const getDayInfo = async () => {
     }
 }
 
-export const addBrother = async (name, pledge_class, image) => {
+export const addBrother = async (name, pledge_class, image, adminJWT) => {
     const formData = new FormData();
     formData.append('name', name);
     formData.append('pledge_class', pledge_class);
     formData.append('image', image);
     try {
-        const response = await axios.post(`${url}/add_brother`, formData);
+        const response = await axios.post(`${url}/add_brother`, formData, { headers: {Authorization: `Bearer ${adminJWT}`}});
         return response.data;
     } catch (error) {
         handleError(error);
@@ -91,7 +81,7 @@ export const addBrother = async (name, pledge_class, image) => {
     }
 }
 
-export const addShopItem = async (name, description, sizes, image, price) => {
+export const addShopItem = async (name, description, sizes, image, price, adminJWT) => {
     const formData = new FormData();
     formData.append("product_name", name);
     formData.append("description", description);
@@ -99,7 +89,7 @@ export const addShopItem = async (name, description, sizes, image, price) => {
     formData.append("image", image);
     formData.append("price", price);
     try {
-        const response = await axios.post(`${url}/add_shop_item`, formData);
+        const response = await axios.post(`${url}/add_shop_item`, formData, { headers: {Authorization: `Bearer ${adminJWT}`}});
         return response.data;
     } catch (error) {
         handleError(error);
@@ -107,11 +97,11 @@ export const addShopItem = async (name, description, sizes, image, price) => {
     }
 }
 
-export const updateRushText = async (newRushText) => {
+export const updateRushText = async (newRushText, adminJWT) => {
     const formData = new FormData();
     formData.append("text", newRushText);
     try {
-        const response = await axios.post(`${url}/update_rush_text`, formData);
+        const response = await axios.post(`${url}/update_rush_text`, formData, { headers: {Authorization: `Bearer ${adminJWT}`}});
         return response.data;
     } catch (error) {
         handleError(error);
@@ -119,13 +109,13 @@ export const updateRushText = async (newRushText) => {
     }
 }
 
-export const updateDayInfo = async (day, newDate, newText) => {
+export const updateDayInfo = async (day, newDate, newText, adminJWT) => {
     const formData = new FormData();
     formData.append("day", day);
     formData.append("date", newDate);
     formData.append("text", newText);
     try {
-        const response = await axios.post(`${url}/update_day_info`, formData);
+        const response = await axios.post(`${url}/update_day_info`, formData, { headers: {Authorization: `Bearer ${adminJWT}`}});
         return response.data;
     } catch (error) {
         handleError(error);
