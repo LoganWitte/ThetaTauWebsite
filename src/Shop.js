@@ -45,7 +45,7 @@ export default function Shop() {
             </div>
             
             <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-4 my-8">
-                {shopItems.map(item => <ShopItem image={item.image} name={item.product_name} description={item.description} sizes={item.size}/>)}
+                {shopItems.map(item => <ShopItem image={item.image} name={item.product_name} description={item.description} sizes={item.size} price={item.price}/>)}
             </div>
             
         </div>

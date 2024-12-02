@@ -91,12 +91,13 @@ export const addBrother = async (name, pledge_class, image) => {
     }
 }
 
-export const addShopItem = async (name, description, sizes, image) => {
+export const addShopItem = async (name, description, sizes, image, price) => {
     const formData = new FormData();
     formData.append("product_name", name);
     formData.append("description", description);
     formData.append("size", sizes);
     formData.append("image", image);
+    formData.append("price", price);
     try {
         const response = await axios.post(`${url}/add_shop_item`, formData);
         return response.data;
