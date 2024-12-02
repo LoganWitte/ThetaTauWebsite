@@ -86,12 +86,43 @@ def get_admin_username():
 
 @app_routes.route('/brothers', methods=['GET'])
 def get_brothers():
+    GREEK_ALPHABET_ORDER = {
+        'Alpha': 1,
+        'Beta': 2,
+        'Gamma': 3,
+        'Delta': 4,
+        'Epsilon': 5,
+        'Zeta': 6,
+        'Eta': 7,
+        'Theta': 8,
+        'Iota': 9,
+        'Kappa': 10,
+        'Lambda': 11,
+        'Mu': 12,
+        'Nu': 13,
+        'Xi': 14,
+        'Omicron': 15,
+        'Pi': 16,
+        'Rho': 17,
+        'Sigma': 18,
+        'Tau': 19,
+        'Upsilon': 20,
+        'Phi': 21,
+        'Chi': 22,
+        'Psi': 23,
+        'Omega': 24
+    }
+
     conn = get_db_connection()
     with conn:
         with conn.cursor() as cursor:
-            cursor.execute("SELECT * FROM brothers ORDER BY pledge_class DESC, name ASC")
+            cursor.execute("SELECT * FROM brothers")
             brothers = cursor.fetchall()
-            return jsonify(brothers)
+            
+            # Sort brothers by pledge class using Greek alphabet order
+            brothers_sorted = sorted(brothers, key=lambda x: GREEK_ALPHABET_ORDER.get(x['pledge_class'].split()[0], float('inf')))
+            
+            return jsonify(brothers_sorted)
     return jsonify({"error": "Error returning brothers"})
 
 BROTHERS_FOLDER = '/var/www/html/ThetaTauWebsite/backend/static/brothers'
