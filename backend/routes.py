@@ -1,8 +1,12 @@
 from flask import Blueprint, jsonify, request
-from flask_bcrypt import Bcrypt
+from flask_bcrypt import bcrypt
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import pymysql.cursors
 import os
+import jwt
+import datetime
+
+SECRET_KEY = "your_secret_key" 
 
 app_routes = Blueprint('app_routes',__name__)
 
@@ -29,6 +33,30 @@ class User(UserMixin):
         self.id = id
         self.username = username
         self.password = password
+
+@app_routes.route('/admin_login', methods=['POST'])
+def admin_login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    
+    if not username or not password:
+        return jsonify({"error": "Username and password are required"}), 400
+    
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM admins WHERE username = %s", (username,))
+            admin = cursor.fetchone()
+            
+            if admin and bcrypt.check_password_hash(admin['password'], password):
+                token = jwt.encode({
+                    'user_id': admin['id'],
+                    'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+                }, SECRET_KEY, algorithm='HS256')
+                
+                return jsonify({"token": token}), 200
+            else:
+                return jsonify({"error": "Invalid username or password"}), 401
 
 
 @app_routes.route('/admin_username', methods=['GET'])
