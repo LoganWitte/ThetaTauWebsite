@@ -5,16 +5,32 @@ import pymysql.cursors
 import os
 import jwt
 import datetime
+from functools import wraps
 
-SECRET_KEY = "your_secret_key" 
+SECRET_KEY = "your_secret_key"
 
-app_routes = Blueprint('app_routes',__name__)
+app_routes = Blueprint('app_routes', __name__)
+
+def admin_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        token = request.headers.get('Authorization')
+        if not token:
+            return jsonify({"error": "Token is missing"}), 403
+        try:
+            jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+        except jwt.ExpiredSignatureError:
+            return jsonify({"error": "Token has expired"}), 403
+        except jwt.InvalidTokenError:
+            return jsonify({"error": "Invalid token"}), 403
+        return f(*args, **kwargs)
+    return decorated_function
 
 @app_routes.route("/")
 def home():
     return "<p>Home</p>"
 
-@app_routes.route("/hello",methods=['GET','PUT'])
+@app_routes.route("/hello", methods=['GET', 'PUT'])
 def hello_world():
     return "<p>Hello, World!</p>"
 
@@ -48,7 +64,7 @@ def admin_login():
             cursor.execute("SELECT * FROM admins WHERE username = %s", (username,))
             admin = cursor.fetchone()
             
-            if admin and Bcrypt.check_password_hash(admin['password'], password):
+            if admin and Bcrypt().check_password_hash(admin['password'], password):
                 token = jwt.encode({
                     'user_id': admin['id'],
                     'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
@@ -58,7 +74,6 @@ def admin_login():
             else:
                 return jsonify({"error": "Invalid username or password"}), 401
 
-
 @app_routes.route('/admin_username', methods=['GET'])
 def get_admin_username():
     conn = get_db_connection()
@@ -66,8 +81,8 @@ def get_admin_username():
         with conn.cursor() as cursor:
             cursor.execute("SELECT username FROM admins LIMIT 1")
             admin = cursor.fetchone()
-            return(admin)
-    return ("message No admin found")
+            return jsonify(admin)
+    return jsonify({"message": "No admin found"})
 
 @app_routes.route('/brothers', methods=['GET'])
 def get_brothers():
@@ -77,12 +92,13 @@ def get_brothers():
             cursor.execute("SELECT * FROM brothers ORDER BY pledge_class DESC, name ASC")
             brothers = cursor.fetchall()
             return jsonify(brothers)
-    return ("error returning brothers")
+    return jsonify({"error": "Error returning brothers"})
 
 BROTHERS_FOLDER = '/var/www/html/ThetaTauWebsite/backend/static/brothers'
 os.makedirs(BROTHERS_FOLDER, exist_ok=True)
 
 @app_routes.route('/add_brother', methods=['POST'])
+@admin_required
 def add_brother():
     if 'image' not in request.files:
         return jsonify({"error": "No image part"}), 400
@@ -116,6 +132,22 @@ def add_brother():
     
     return jsonify({"message": "Brother added successfully"}), 201
 
+@app_routes.route('/remove_brother', methods=['POST'])
+@admin_required
+def remove_brother():
+    brother_id = request.form.get('id')
+    
+    if not brother_id:
+        return jsonify({"error": "Brother ID is required"}), 400
+    
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute("DELETE FROM brothers WHERE id = %s", (brother_id,))
+            conn.commit()
+    
+    return jsonify({"message": "Brother removed successfully"}), 200
+
 @app_routes.route('/shop', methods=['GET'])
 def get_shop_items():
     conn = get_db_connection()
@@ -124,12 +156,13 @@ def get_shop_items():
             cursor.execute("SELECT * FROM shop")
             shop_items = cursor.fetchall()
             return jsonify(shop_items)
-    return ("error returning shop items")
+    return jsonify({"error": "Error returning shop items"})
 
 SHOP_FOLDER = '/var/www/html/ThetaTauWebsite/backend/static/shop'
 os.makedirs(SHOP_FOLDER, exist_ok=True)
 
 @app_routes.route('/add_shop_item', methods=['POST'])
+@admin_required
 def add_shop_item():
     if 'image' not in request.files:
         return jsonify({"error": "No image part"}), 400
@@ -170,7 +203,24 @@ def add_shop_item():
     
     return jsonify({"message": "Shop item added successfully"}), 201
 
+@app_routes.route('/remove_shop_item', methods=['POST'])
+@admin_required
+def remove_shop_item():
+    shop_item_id = request.form.get('id')
+    
+    if not shop_item_id:
+        return jsonify({"error": "Shop item ID is required"}), 400
+    
+    conn = get_db_connection()
+    with conn:
+        with conn.cursor() as cursor:
+            cursor.execute("DELETE FROM shop WHERE id = %s", (shop_item_id,))
+            conn.commit()
+    
+    return jsonify({"message": "Shop item removed successfully"}), 200
+
 @app_routes.route('/update_rush_text', methods=['POST'])
+@admin_required
 def update_rush_text():
     new_text = request.form.get('text')
     
@@ -199,6 +249,7 @@ def get_rush_text():
                 return jsonify({"error": "No rush text found"}), 404
 
 @app_routes.route('/update_day_info', methods=['POST'])
+@admin_required
 def update_day_info():
     day = request.form.get('day')
     date = request.form.get('date')
