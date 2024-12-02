@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flask_bcrypt import bcrypt
+from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import pymysql.cursors
 import os
@@ -48,7 +48,7 @@ def admin_login():
             cursor.execute("SELECT * FROM admins WHERE username = %s", (username,))
             admin = cursor.fetchone()
             
-            if admin and bcrypt.check_password_hash(admin['password'], password):
+            if admin and Bcrypt.check_password_hash(admin['password'], password):
                 token = jwt.encode({
                     'user_id': admin['id'],
                     'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
