@@ -81,12 +81,13 @@ export const addBrother = async (name, pledge_class, image, adminJWT) => {
     }
 }
 
-export const addShopItem = async (name, description, sizes, image, adminJWT) => {
+export const addShopItem = async (name, description, sizes, image, price, adminJWT) => {
     const formData = new FormData();
     formData.append("product_name", name);
     formData.append("description", description);
     formData.append("size", sizes);
     formData.append("image", image);
+    formData.append("price", price);
     try {
         const response = await axios.post(`${url}/add_shop_item`, formData, { headers: {Authorization: `Bearer ${adminJWT}`}});
         return response.data;
